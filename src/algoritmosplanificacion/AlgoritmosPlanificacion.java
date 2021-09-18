@@ -5,6 +5,7 @@
  */
 package algoritmosplanificacion;
 
+import vista.MenuPrincipal;
 import vista.VistaFCFS;
 
 /**
@@ -20,6 +21,7 @@ public class AlgoritmosPlanificacion {
         
         VistaFCFS v = new VistaFCFS();
         v.setVisible(true);
+        
     }
     
 }

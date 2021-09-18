@@ -1,7 +1,9 @@
 package vista;
 
+import java.awt.Font;
 import java.awt.HeadlessException;
 import javax.swing.*;
+import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -13,14 +15,12 @@ import javax.swing.table.DefaultTableModel;
 public class VistaFCFS extends JFrame {
 
     //Definición de páneles
-    private final JPanel panelTables;
+    private final JPanel panelProcess;
     private final JPanel panelGraphs;
 
     //Definición de labels
     private final JLabel[] lblProcess;
-
-    private JScrollPane scroll = new JScrollPane();
-
+    
     //Definición de botones
     private final JButton[] btnAdd;
     private final JButton[] btnExec;
@@ -28,30 +28,48 @@ public class VistaFCFS extends JFrame {
 
     //Definición de tablas
     private JTable tblProcesses;
+    private JScrollPane scrollTable;
+
+    //Definición de textos
+    private Object[][] text = {
+        {"Ejemplo1", "Ejemplo 2", "Ejemplo 3", "Ejemplo 4", "Ejemplo 5"},
+        {"Ejemplo1", "Ejemplo 2", "Ejemplo 3", "Ejemplo 4", "Ejemplo 5"}
+    };
+    private final Object[] tittle = {"Proceso", "Llegada", "Ejecución", "Blq. Inicio", "Blq. Duración"};
+
+    private final Font font;
 
     public VistaFCFS() throws HeadlessException {
         //Título
         super("Primero en llegar primero en salir");
 
+        font = new Font("Inter Medium", Font.PLAIN, 15);
+
         //Parámetros del Frame
-        this.setSize(1270, 1000);
+        this.setSize(1100, 1000);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setLayout(null);
         this.setLocationRelativeTo(null);
 
-        //Constructor de páneles
-        panelTables = new JPanel();
+        //Constructor de pánel de tablas
+        panelProcess = new JPanel();
+        //panelTables.add(new JScrollPane(tblProcesses));
+        panelProcess.setBorder(BorderFactory.createTitledBorder(BorderFactory.
+                createEtchedBorder(), "Procesos", TitledBorder.LEFT, TitledBorder.TOP, font));
+        this.add(panelProcess);
+        panelProcess.setBounds(20, 20, 500, 300);
+        panelProcess.setLayout(null);
+
+        //Constructor de pánel de canvas
         panelGraphs = new JPanel();
         this.add(panelGraphs);
-        this.add(panelTables);
-        panelTables.setBounds(10, 10, 1260, 300);
-        panelTables.setLayout(null);
 
         //Constructor de labels
         lblProcess = new JLabel[5];
         for (int i = 0; i < 5; i++) {
             lblProcess[i] = new JLabel("Proceso " + String.valueOf(i + 1));
-            panelTables.add(lblProcess[i]);
+            lblProcess[i].setFont(font);
+            panelProcess.add(lblProcess[i]);
         }
         lblProcess[0].setBounds(10, 30, 100, 30);
         lblProcess[1].setBounds(10, 70, 100, 30);
@@ -65,13 +83,16 @@ public class VistaFCFS extends JFrame {
         btnTerminate = new JButton[5];
         for (int i = 0; i < 5; i++) {
             btnAdd[i] = new JButton("Añadir");
-            panelTables.add(btnAdd[i]);
+            btnAdd[i].setFont(font);
+            panelProcess.add(btnAdd[i]);
 
             btnExec[i] = new JButton("Ejecutar");
-            panelTables.add(btnExec[i]);
+            btnExec[i].setFont(font);
+            panelProcess.add(btnExec[i]);
 
             btnTerminate[i] = new JButton("Terminar");
-            panelTables.add(btnTerminate[i]);
+            btnTerminate[i].setFont(font);
+            panelProcess.add(btnTerminate[i]);
         }
         btnAdd[0].setBounds(120, 30, 90, 30);
         btnAdd[1].setBounds(120, 70, 90, 30);
@@ -92,20 +113,13 @@ public class VistaFCFS extends JFrame {
         btnTerminate[4].setBounds(350, 190, 100, 30);
 
         //Definición de tablas
-        tblProcesses = new JTable();
-        panelTables.add(tblProcesses);
-        tblProcesses.setBounds(500, 10, 400, 400);
-        tblProcesses.setModel(new DefaultTableModel(
-                new Object[][]{
-                    {null, null, null, null},
-                    {null, null, null, null},
-                    {null, null, null, null},
-                    {null, null, null, null}
-                },
-                new String[]{
-                    "Title 1", "Title 2", "Title 3", "Title 4"
-                }
-        ));
+        tblProcesses = new JTable(text, tittle);
+        scrollTable = new JScrollPane(tblProcesses);
+        tblProcesses.setFont(font);
+        tblProcesses.getTableHeader().setFont(font);
+        tblProcesses.setEnabled(false);
+        this.add(scrollTable);
+        scrollTable.setBounds(550, 27, 530, 290);
 
     }
 
