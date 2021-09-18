@@ -16,7 +16,7 @@ public class VistaFCFS extends JFrame {
 
     //Definición de páneles
     private final JPanel panelProcess;
-    private final JPanel panelGraphs;
+    private final JScrollPane panelGraphs;
 
     //Definición de labels
     private final JLabel[] lblProcess;
@@ -37,13 +37,13 @@ public class VistaFCFS extends JFrame {
     };
     private final Object[] tittle = {"Proceso", "Llegada", "Ejecución", "Blq. Inicio", "Blq. Duración"};
 
-    private final Font font;
+    private final Font fontInter;
 
     public VistaFCFS() throws HeadlessException {
         //Título
         super("Primero en llegar primero en salir");
 
-        font = new Font("Inter Medium", Font.PLAIN, 15);
+        fontInter = new Font("Inter Medium", Font.PLAIN, 15);
 
         //Parámetros del Frame
         this.setSize(1100, 1000);
@@ -53,22 +53,25 @@ public class VistaFCFS extends JFrame {
 
         //Constructor de pánel de tablas
         panelProcess = new JPanel();
-        //panelTables.add(new JScrollPane(tblProcesses));
         panelProcess.setBorder(BorderFactory.createTitledBorder(BorderFactory.
-                createEtchedBorder(), "Procesos", TitledBorder.LEFT, TitledBorder.TOP, font));
+                createEtchedBorder(), "Procesos", TitledBorder.LEFT, TitledBorder.TOP, fontInter));
         this.add(panelProcess);
         panelProcess.setBounds(20, 20, 500, 300);
         panelProcess.setLayout(null);
 
         //Constructor de pánel de canvas
-        panelGraphs = new JPanel();
+        panelGraphs = new JScrollPane();
         this.add(panelGraphs);
-
+        panelGraphs.setBounds(20, 350, 1060, 600);
+        panelGraphs.setLayout(null);
+        panelGraphs.setBorder(BorderFactory.createTitledBorder(BorderFactory.
+                createEtchedBorder(), "Gráfico", TitledBorder.LEFT, TitledBorder.TOP, fontInter));
+        
         //Constructor de labels
         lblProcess = new JLabel[5];
         for (int i = 0; i < 5; i++) {
             lblProcess[i] = new JLabel("Proceso " + String.valueOf(i + 1));
-            lblProcess[i].setFont(font);
+            lblProcess[i].setFont(fontInter);
             panelProcess.add(lblProcess[i]);
         }
         lblProcess[0].setBounds(10, 30, 100, 30);
@@ -83,15 +86,15 @@ public class VistaFCFS extends JFrame {
         btnTerminate = new JButton[5];
         for (int i = 0; i < 5; i++) {
             btnAdd[i] = new JButton("Añadir");
-            btnAdd[i].setFont(font);
+            btnAdd[i].setFont(fontInter);
             panelProcess.add(btnAdd[i]);
 
             btnExec[i] = new JButton("Ejecutar");
-            btnExec[i].setFont(font);
+            btnExec[i].setFont(fontInter);
             panelProcess.add(btnExec[i]);
 
             btnTerminate[i] = new JButton("Terminar");
-            btnTerminate[i].setFont(font);
+            btnTerminate[i].setFont(fontInter);
             panelProcess.add(btnTerminate[i]);
         }
         btnAdd[0].setBounds(120, 30, 90, 30);
@@ -115,8 +118,8 @@ public class VistaFCFS extends JFrame {
         //Definición de tablas
         tblProcesses = new JTable(text, tittle);
         scrollTable = new JScrollPane(tblProcesses);
-        tblProcesses.setFont(font);
-        tblProcesses.getTableHeader().setFont(font);
+        tblProcesses.setFont(fontInter);
+        tblProcesses.getTableHeader().setFont(fontInter);
         tblProcesses.setEnabled(false);
         this.add(scrollTable);
         scrollTable.setBounds(550, 27, 530, 290);
