@@ -1,10 +1,8 @@
 package vista;
 
-import java.awt.Font;
-import java.awt.HeadlessException;
+import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
-import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -18,9 +16,12 @@ public class VistaFCFS extends JFrame {
     private final JPanel panelProcess;
     private final JScrollPane panelGraphs;
 
+    //Definición de Canvas
+    private Canvas canvas = new Canvas();
+
     //Definición de labels
     private final JLabel[] lblProcess;
-    
+
     //Definición de botones
     private final JButton[] btnAdd;
     private final JButton[] btnExec;
@@ -35,7 +36,7 @@ public class VistaFCFS extends JFrame {
         {"Ejemplo1", "Ejemplo 2", "Ejemplo 3", "Ejemplo 4", "Ejemplo 5"},
         {"Ejemplo1", "Ejemplo 2", "Ejemplo 3", "Ejemplo 4", "Ejemplo 5"}
     };
-    private final Object[] tittle = {"Proceso", "Llegada", "Ejecución", "Blq. Inicio", "Blq. Duración"};
+    private final Object[] header = {"Proceso", "Llegada", "Ejecución", "Blq. Inicio", "Blq. Duración"};
 
     private final Font fontInter;
 
@@ -49,6 +50,7 @@ public class VistaFCFS extends JFrame {
         this.setSize(1100, 1000);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setLayout(null);
+        this.setResizable(false);
         this.setLocationRelativeTo(null);
 
         //Constructor de pánel de tablas
@@ -67,6 +69,9 @@ public class VistaFCFS extends JFrame {
         panelGraphs.setBorder(BorderFactory.createTitledBorder(BorderFactory.
                 createEtchedBorder(), "Gráfico", TitledBorder.LEFT, TitledBorder.TOP, fontInter));
         
+        panelGraphs.add(canvas);
+        canvas.setBounds(20, 20, 1000, 550);
+        
         //Constructor de labels
         lblProcess = new JLabel[5];
         for (int i = 0; i < 5; i++) {
@@ -74,11 +79,11 @@ public class VistaFCFS extends JFrame {
             lblProcess[i].setFont(fontInter);
             panelProcess.add(lblProcess[i]);
         }
-        lblProcess[0].setBounds(10, 30, 100, 30);
-        lblProcess[1].setBounds(10, 70, 100, 30);
-        lblProcess[2].setBounds(10, 110, 100, 30);
-        lblProcess[3].setBounds(10, 150, 100, 30);
-        lblProcess[4].setBounds(10, 190, 100, 30);
+        lblProcess[0].setBounds(30, 30, 100, 30);
+        lblProcess[1].setBounds(30, 70, 100, 30);
+        lblProcess[2].setBounds(30, 110, 100, 30);
+        lblProcess[3].setBounds(30, 150, 100, 30);
+        lblProcess[4].setBounds(30, 190, 100, 30);
 
         //Constructor de botones
         btnAdd = new JButton[5];
@@ -97,33 +102,34 @@ public class VistaFCFS extends JFrame {
             btnTerminate[i].setFont(fontInter);
             panelProcess.add(btnTerminate[i]);
         }
-        btnAdd[0].setBounds(120, 30, 90, 30);
-        btnAdd[1].setBounds(120, 70, 90, 30);
-        btnAdd[2].setBounds(120, 110, 90, 30);
-        btnAdd[3].setBounds(120, 150, 90, 30);
-        btnAdd[4].setBounds(120, 190, 90, 30);
+        btnAdd[0].setBounds(140, 30, 90, 30);
+        btnAdd[1].setBounds(140, 70, 90, 30);
+        btnAdd[2].setBounds(140, 110, 90, 30);
+        btnAdd[3].setBounds(140, 150, 90, 30);
+        btnAdd[4].setBounds(140, 190, 90, 30);
 
-        btnExec[0].setBounds(230, 30, 100, 30);
-        btnExec[1].setBounds(230, 70, 100, 30);
-        btnExec[2].setBounds(230, 110, 100, 30);
-        btnExec[3].setBounds(230, 150, 100, 30);
-        btnExec[4].setBounds(230, 190, 100, 30);
+        btnExec[0].setBounds(250, 30, 100, 30);
+        btnExec[1].setBounds(250, 70, 100, 30);
+        btnExec[2].setBounds(250, 110, 100, 30);
+        btnExec[3].setBounds(250, 150, 100, 30);
+        btnExec[4].setBounds(250, 190, 100, 30);
 
-        btnTerminate[0].setBounds(350, 30, 100, 30);
-        btnTerminate[1].setBounds(350, 70, 100, 30);
-        btnTerminate[2].setBounds(350, 110, 100, 30);
-        btnTerminate[3].setBounds(350, 150, 100, 30);
-        btnTerminate[4].setBounds(350, 190, 100, 30);
+        btnTerminate[0].setBounds(370, 30, 100, 30);
+        btnTerminate[1].setBounds(370, 70, 100, 30);
+        btnTerminate[2].setBounds(370, 110, 100, 30);
+        btnTerminate[3].setBounds(370, 150, 100, 30);
+        btnTerminate[4].setBounds(370, 190, 100, 30);
 
         //Definición de tablas
-        tblProcesses = new JTable(text, tittle);
+        tblProcesses = new JTable(text, header);
         scrollTable = new JScrollPane(tblProcesses);
         tblProcesses.setFont(fontInter);
         tblProcesses.getTableHeader().setFont(fontInter);
         tblProcesses.setEnabled(false);
         this.add(scrollTable);
         scrollTable.setBounds(550, 27, 530, 290);
-
+        
     }
-
+    
+    
 }
