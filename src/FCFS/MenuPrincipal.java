@@ -11,7 +11,9 @@ import javax.swing.border.TitledBorder;
 
 /**
  *
- * @author fedc
+ * @author Christian Caro Vargas
+ * @author Jorge Andrés Bohórquez Castellanos
+ * @author Santiago Ríos Valero
  */
 public class MenuPrincipal extends JFrame {
 

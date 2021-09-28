@@ -1,16 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package algoritmosplanificacion;
 
-import vista.MenuPrincipal;
-import vista.VistaFCFS;
+import FCFS.VistaFCFS;
 
 /**
  *
- * @author fedc
+ * @author Christian Caro Vargas
+ * @author Jorge Andrés Bohórquez Castellanos
+ * @author Santiago Ríos Valero
  */
 public class AlgoritmosPlanificacion {
 
@@ -18,10 +14,15 @@ public class AlgoritmosPlanificacion {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        
+
         VistaFCFS v = new VistaFCFS();
-        v.setVisible(true);
-        
+        javax.swing.SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                v.setVisible(true);
+            }
+        });
+
     }
-    
+
 }
