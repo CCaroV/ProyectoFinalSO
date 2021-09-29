@@ -16,31 +16,30 @@ import javax.swing.border.TitledBorder;
 public class PanelCanvas extends JScrollPane {
 
     CanvasFCFS canvas = new CanvasFCFS();
-    
+
     private final Font fontInter;
-    
+
     //private JScrollPane scrollPane;
     private JPanel mainPanel;
-    
+
+    /**
+     * Constructor
+     */
     public PanelCanvas() {
-        
+
         fontInter = new Font("Inter Medium", Font.PLAIN, 15);
-        
+
         mainPanel = new JPanel();
-        
+
         //this.setContentPane(scrollPane);
-        
         //mainPanel.setBorder(BorderFactory.createTitledBorder(BorderFactory.
-         //       createEtchedBorder(), "Gráfico", TitledBorder.LEFT, TitledBorder.TOP, fontInter));
-        
+        //       createEtchedBorder(), "Gráfico", TitledBorder.LEFT, TitledBorder.TOP, fontInter));
         this.setPreferredSize(new Dimension(1025, 560));
         this.getViewport().add(mainPanel);
         mainPanel.setLayout(new BorderLayout());
         mainPanel.add(canvas, BorderLayout.LINE_START);
         canvas.setBounds(20, 20, 1000, 550);
-        
-        
+
     }
-    
-    
+
 }

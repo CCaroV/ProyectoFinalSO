@@ -17,32 +17,37 @@ public class MainTable extends JPanel {
 
     private JTable tblProcesses;
     private JScrollPane scrollTable;
-    
+
     private Object[][] text;
-    private final Object[] header = {"Proceso", "Llegada", "Ejecución", "Blq. Inicio", "Blq. Duración"};
-    
+    private final String[] header = {"Proceso", "Llegada", "Ejecución", 
+        "<html><center>Bloqueo <br>inicio", "<html><center>Bloqueo <br>duración"};
+
     private final Font fontInter;
-    
+
+    /**
+     * Constructor
+     */
     public MainTable() {
         //Definición de fuentes
-        fontInter = new Font("Inter Medium", Font.PLAIN, 15);
-        
-        text = new Object[6][5];
-        
+        this.fontInter = new Font("Inter Medium", Font.PLAIN, 15);
+
+        this.text = new Object[6][5];
+
         this.setLayout(new BorderLayout());
-        this.setPreferredSize(new Dimension(500, 290));
+        this.setPreferredSize(new Dimension(500, 223));
         this.add(getTable(), BorderLayout.CENTER);
     }
-    
+
     private JScrollPane getTable() {
         tblProcesses = new JTable(text, header);
         tblProcesses.setRowHeight(30);
         scrollTable = new JScrollPane(tblProcesses);
         tblProcesses.setFont(fontInter);
         tblProcesses.getTableHeader().setFont(fontInter);
-        tblProcesses.setEnabled(false);
-        
+        //tblProcesses.setEnabled(false);
+        tblProcesses.getTableHeader().setPreferredSize(new Dimension(30, 40));
+
         return scrollTable;
     }
-    
+
 }
