@@ -66,8 +66,6 @@ public class VistaFCFS extends JFrame {
         c.gridheight = 1;
         mainPanel.add(new PanelCanvas(), c);
 
-        
-
         //Agrega el panel principal al scroll panel
         panelScroll.getViewport().add(mainPanel);
         panelScroll.setAlignmentY(CENTER_ALIGNMENT);

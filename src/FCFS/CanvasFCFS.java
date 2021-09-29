@@ -15,5 +15,8 @@ public class CanvasFCFS extends Canvas{
     public void paint(Graphics g) {
         g.drawLine(20, 540, 1000, 540);
         g.drawLine(25, 20, 25, 545);
+        g.fillRect(25, 25, 25, 25);
     }
+    
+    
 }

@@ -45,6 +45,4 @@ public class MainTable extends JPanel {
         return scrollTable;
     }
     
-    
-    
 }
