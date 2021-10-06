@@ -39,7 +39,7 @@ public class MainProcess extends JPanel {
         this.setBorder(BorderFactory.createTitledBorder(BorderFactory.
                 createEtchedBorder(), "Procesos", TitledBorder.LEFT, TitledBorder.TOP, fontInter));
         
-        this.setPreferredSize(new Dimension(470, 300));
+        this.setPreferredSize(new Dimension(470, 280));
         
         //Constructor de labels
         lblProcess = new JLabel[6];

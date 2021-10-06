@@ -4,9 +4,11 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/home/fedc/Documents/Universidad/Sistemas%20Operativos/ProyectoFinalSO/src/algoritmosplanificacion/AlgoritmosPlanificacion.java</file>
+            <file>file:/home/fedc/Documents/Universidad/Sistemas%20Operativos/ProyectoFinalSO/src/FCFS/SummaryTable.java</file>
             <file>file:/home/fedc/Documents/Universidad/Sistemas%20Operativos/ProyectoFinalSO/src/FCFS/MainTable.java</file>
             <file>file:/home/fedc/Documents/Universidad/Sistemas%20Operativos/ProyectoFinalSO/src/FCFS/VistaFCFS.java</file>
             <file>file:/home/fedc/Documents/Universidad/Sistemas%20Operativos/ProyectoFinalSO/src/FCFS/MainProcess.java</file>
+            <file>file:/home/fedc/Documents/Universidad/Sistemas%20Operativos/ProyectoFinalSO/src/FCFS/TimeTable.java</file>
             <file>file:/home/fedc/Documents/Universidad/Sistemas%20Operativos/ProyectoFinalSO/src/FCFS/CanvasFCFS.java</file>
             <file>file:/home/fedc/Documents/Universidad/Sistemas%20Operativos/ProyectoFinalSO/src/FCFS/PanelCanvas.java</file>
         </group>

@@ -53,13 +53,20 @@ public class VistaFCFS extends JFrame {
         mainPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
 
         mainPanel.setLayout(new GridBagLayout());
-        placeComp(new MainTable(), mainPanel, 0, 0, 2, 1);
-        placeComp(new TimeTable(), mainPanel, 2, 0, 2, 1);
-        placeComp(new PanelCanvas(), mainPanel, 1, 1, 3, 1);
+        
+        //Primera fila
+        placeComp(new MainProcess(), mainPanel, 0, 0, 2, 1);
+        placeComp(new MainTable(), mainPanel, 2, 0, 2, 1);
+        placeComp(new SummaryTable(), mainPanel, 4, 0, 1, 1);
+        
+        //Segunda fila
+        placeComp(new TimeTable(), mainPanel, 0, 1, 5, 1);
+        
+        //Tercera fila
+        placeComp(new PanelCanvas(), mainPanel, 0, 2, 5, 1);
 
         //Agrega el panel principal al scroll panel
         panelScroll.getViewport().add(mainPanel);
-        panelScroll.setAlignmentY(CENTER_ALIGNMENT);
     }
 
     /**

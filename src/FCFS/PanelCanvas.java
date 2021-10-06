@@ -2,7 +2,6 @@ package FCFS;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.Font;
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
@@ -31,10 +30,9 @@ public class PanelCanvas extends JScrollPane {
 
         mainPanel = new JPanel();
 
-        //this.setContentPane(scrollPane);
-        //mainPanel.setBorder(BorderFactory.createTitledBorder(BorderFactory.
-        //       createEtchedBorder(), "Gráfico", TitledBorder.LEFT, TitledBorder.TOP, fontInter));
-        this.setPreferredSize(new Dimension(1025, 560));
+        mainPanel.setBorder(BorderFactory.createTitledBorder(BorderFactory.
+               createEtchedBorder(), "Gráfico", TitledBorder.LEFT, TitledBorder.TOP, fontInter));
+        this.setPreferredSize(new Dimension(1050, 580));
         this.getViewport().add(mainPanel);
         mainPanel.setLayout(new BorderLayout());
         mainPanel.add(canvas, BorderLayout.LINE_START);
