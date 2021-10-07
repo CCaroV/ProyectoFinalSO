@@ -1,6 +1,7 @@
 package FCFS;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
@@ -40,6 +41,7 @@ public class MainProcess extends JPanel {
                 createEtchedBorder(), "Procesos", TitledBorder.LEFT, TitledBorder.TOP, fontInter));
         
         this.setPreferredSize(new Dimension(470, 280));
+        this.setBackground(Color.white);
         
         //Constructor de labels
         lblProcess = new JLabel[6];
@@ -72,7 +74,7 @@ public class MainProcess extends JPanel {
         lblProcess[1].setBounds(30, 70, 100, 30);
         lblProcess[2].setText("Zoom");
         lblProcess[2].setBounds(30, 110, 100, 30);
-        lblProcess[3].setText("Netflix");
+        lblProcess[3].setText("Steam");
         lblProcess[3].setBounds(30, 150, 100, 30);
         lblProcess[4].setText("Matlab");
         lblProcess[4].setBounds(30, 190, 100, 30);

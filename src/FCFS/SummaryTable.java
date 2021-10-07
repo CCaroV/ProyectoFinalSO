@@ -1,11 +1,13 @@
 package FCFS;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.table.TableColumn;
 
 /**
  *
@@ -30,6 +32,7 @@ public class SummaryTable extends JPanel {
         this.setLayout(new BorderLayout());
         this.setPreferredSize(new Dimension(350, 223));
         this.add(getTable(), BorderLayout.CENTER);
+        this.setBackground(Color.white);
     }
     
     public JScrollPane getTable() {
@@ -53,6 +56,11 @@ public class SummaryTable extends JPanel {
         text[4][0] = "Promedio de ejecución";
         text[5][0] = "Promedio de espera";
         text[6][0] = "Promedio tiempo perdido";
+        
+        TableColumn column = tblSummary.getColumnModel().getColumn(0);
+        column.setPreferredWidth(110);
+        column = tblSummary.getColumnModel().getColumn(1);
+        column.setPreferredWidth(30);
     }
 
 }

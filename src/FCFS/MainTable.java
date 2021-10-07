@@ -1,6 +1,7 @@
 package FCFS;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import javax.swing.JPanel;
@@ -35,7 +36,9 @@ public class MainTable extends JPanel {
 
         this.setLayout(new BorderLayout());
         this.setPreferredSize(new Dimension(500, 223));
+        this.setBackground(Color.white);
         this.add(getTable(), BorderLayout.CENTER);
+        fillText();
     }
 
     private JScrollPane getTable() {
@@ -44,10 +47,18 @@ public class MainTable extends JPanel {
         scrollTable = new JScrollPane(tblProcesses);
         tblProcesses.setFont(fontInter);
         tblProcesses.getTableHeader().setFont(fontInter);
-        //tblProcesses.setEnabled(false);
+        tblProcesses.setEnabled(false);
         tblProcesses.getTableHeader().setPreferredSize(new Dimension(30, 40));
 
         return scrollTable;
     }
-
+    
+    private void fillText() {
+        text[0][0] = "Firefox";
+        text[1][0] = "Spotify";
+        text[2][0] = "Chrome";
+        text[3][0] = "Matlab";
+        text[4][0] = "Steam";
+        text[5][0] = "Zoom";
+    }
 }

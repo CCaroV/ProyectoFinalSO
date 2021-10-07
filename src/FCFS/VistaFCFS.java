@@ -40,7 +40,7 @@ public class VistaFCFS extends JFrame {
         screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         
         if (checkScreen()) {
-            this.setSize(1600, 900);
+            this.setSize(1400, 720);
         } else {
             this.setSize(screenSize.width, screenSize.height);
         }
@@ -51,8 +51,8 @@ public class VistaFCFS extends JFrame {
         //Definición del panel principal
         mainPanel = new JPanel();
         mainPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
-
         mainPanel.setLayout(new GridBagLayout());
+        mainPanel.setBackground(Color.white);
         
         //Primera fila
         placeComp(new MainProcess(), mainPanel, 0, 0, 2, 1);

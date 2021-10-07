@@ -29,6 +29,7 @@ public class TimeTable extends JPanel {
         this.setLayout(new BorderLayout());
         this.setPreferredSize(new Dimension(1000, 223));
         this.add(getTable(), BorderLayout.CENTER);
+        this.setBackground(Color.white);
     }
 
     /**
