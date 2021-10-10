@@ -113,6 +113,22 @@ public class MainProcess extends JPanel {
 
     }
 
+    public JButton getBtnAdd (int row) {
+        return this.btnAdd[row];
+    }
+    
+    public JButton getBtnExec (int row) {
+        return this.btnExec[row];
+    }
+    
+    public JButton getBtnBlock (int row) {
+        return this.btnBlock[row];
+    }
+    
+    public JButton getBtnTerminate (int row) {
+        return this.btnTerminate[row];
+    }
+    
     public void asignListener(ControladorFCFS c) {
         for (int i = 0; i < btnAdd.length; i++) {
             btnAdd[i].addActionListener(c);
