@@ -30,8 +30,6 @@ public class ControladorFCFS implements ActionListener {
     TimeTable timeTable;
     Timer timer;
 
-    private ActionListener a;
-
     public ControladorFCFS(VistaFCFS frame, FCFS modeloFCFS) {
 
         this.vista = frame;
@@ -71,7 +69,7 @@ public class ControladorFCFS implements ActionListener {
         vista.placeComp(this.process, vista.getMainPanel(), 0, 2, 2, 1);
         vista.placeComp(this.summaryTable, vista.getMainPanel(), 2, 2, 2, 1);
     }
-    
+
     public void setupListeners() {
         this.panelEndBegin.asignListener(this);
         this.process.asignListener(this);
