@@ -1,8 +1,7 @@
 package algoritmosplanificacion;
 
-import vista.MainTable;
 import vista.VistaFCFS;
-import controlador.controladorFCFS;
+import controlador.ControladorFCFS;
 import modelo.FCFS;
 
 /**
@@ -18,13 +17,15 @@ public class AlgoritmosPlanificacion {
      */
     public static void main(String[] args) {
 
-        VistaFCFS v = new VistaFCFS();
+        VistaFCFS vistaFCFS = new VistaFCFS();
         FCFS modelo = new FCFS();
-        controladorFCFS controlador = new controladorFCFS(v, modelo);
+        ControladorFCFS controlador = new ControladorFCFS(vistaFCFS, modelo);
+
         javax.swing.SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
                 controlador.setupFrame();
+                controlador.setupListeners();
             }
         });
     }

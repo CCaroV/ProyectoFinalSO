@@ -21,7 +21,7 @@ public class SummaryTable extends JPanel {
     private JScrollPane scrollTable;
 
     private Object[][] text;
-    private String[] header = {"Métrica", "Valor"};
+    private final String[] header = {"Métrica", "Valor"};
 
     private final Font fontInter;
 

@@ -18,7 +18,7 @@ import vista.PanelEndBegin;
  * @author Jorge Andrés Bohórquez Castellanos
  * @author Santiago Ríos Valero
  */
-public class controladorFCFS {
+public class ControladorFCFS implements ActionListener {
 
     VistaFCFS vista;
     FCFS modelo;
@@ -32,7 +32,7 @@ public class controladorFCFS {
 
     private ActionListener a;
 
-    public controladorFCFS(VistaFCFS frame, FCFS modeloFCFS) {
+    public ControladorFCFS(VistaFCFS frame, FCFS modeloFCFS) {
 
         this.vista = frame;
         this.modelo = modeloFCFS;
@@ -43,16 +43,16 @@ public class controladorFCFS {
         this.summaryTable = new SummaryTable();
         this.timeTable = new TimeTable();
 
-        //Definición del evento para timer
-        this.a = new ActionListener() {
+        //Define el intervalo de tiempo y el evento a escuchar
+        this.timer = new Timer(1000, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 setCellValue();
             }
-        };
+        });
+    }
 
-        //Define el intervalo de tiempo y el evento a escuchar
-        this.timer = new Timer(1000, a);
+    public ControladorFCFS() {
     }
 
     public void setupFrame() {
@@ -70,7 +70,11 @@ public class controladorFCFS {
         //vista.placeComp(this.canvas, vista.getMainPanel(), 0, 2, 5, 1);
         vista.placeComp(this.process, vista.getMainPanel(), 0, 2, 2, 1);
         vista.placeComp(this.summaryTable, vista.getMainPanel(), 2, 2, 2, 1);
-        timer.start();
+    }
+    
+    public void setupListeners() {
+        this.panelEndBegin.asignListener(this);
+        this.process.asignListener(this);
     }
 
     public void setCellValue() {
@@ -80,6 +84,15 @@ public class controladorFCFS {
         mainTable.setCell(3, 1, (int) mainTable.getCell(3, 1) + 1);
         mainTable.setCell(4, 1, (int) mainTable.getCell(4, 1) + 1);
         mainTable.setCell(5, 1, (int) mainTable.getCell(5, 1) + 1);
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent ae) {
+        if (ae.getSource().equals(panelEndBegin.getBtnStart())) {
+            timer.start();
+        } else if (ae.getSource().equals(panelEndBegin.getBtnFinish())) {
+            timer.stop();
+        }
     }
 
 }
