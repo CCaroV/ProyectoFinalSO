@@ -1,11 +1,8 @@
-package FCFS;
+package vista;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.Font;
-import java.awt.GridLayout;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -33,9 +30,8 @@ public class MainProcess extends JPanel {
     
     public MainProcess() {
         
-        fontInter = new Font("Inter Medium", Font.PLAIN, 15);
+        this.fontInter = new Font("Inter Medium", Font.PLAIN, 15);
         
-        //this.setLayout(new GridLayout(6, 3));
         this.setLayout(null);
         this.setBorder(BorderFactory.createTitledBorder(BorderFactory.
                 createEtchedBorder(), "Procesos", TitledBorder.LEFT, TitledBorder.TOP, fontInter));

@@ -1,7 +1,13 @@
-package FCFS;
+package vista;
 
-import java.awt.*;
-import javax.swing.*;
+
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 
 /**
  *
@@ -47,6 +53,15 @@ public class TimeTable extends JPanel {
         tblTime.setEnabled(false);
 
         return scrollTable;
+    }
+    
+    public Object getCell(int row, int col) {
+        return this.text[row][col];
+    }
+
+    public void setCell(int row, int col, Object object) {
+        this.text[row][col] = object;
+        tblTime.updateUI();
     }
 
 }

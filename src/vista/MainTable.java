@@ -1,4 +1,4 @@
-package FCFS;
+package vista;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -20,7 +20,7 @@ public class MainTable extends JPanel {
     private JScrollPane scrollTable;
 
     private Object[][] text;
-    private final String[] header = {"Proceso", "Llegada", "Ejecución", 
+    private final String[] header = {"Proceso", "Llegada", "Ejecución",
         "<html><center>Bloqueo <br>inicio", "<html><center>Bloqueo <br>duración"};
 
     private final Font fontInter;
@@ -52,13 +52,31 @@ public class MainTable extends JPanel {
 
         return scrollTable;
     }
-    
+
     private void fillText() {
+        //Nombre de los procesos en la tabla
         text[0][0] = "Firefox";
         text[1][0] = "Spotify";
         text[2][0] = "Chrome";
         text[3][0] = "Matlab";
         text[4][0] = "Steam";
         text[5][0] = "Zoom";
+
+        //Tiempo de llegada de cada proceso
+        text[0][1] = 1;
+        text[1][1] = 3;
+        text[2][1] = 6;
+        text[3][1] = 10;
+        text[4][1] = 8;
+        text[5][1] = 7;
+    }
+
+    public Object getCell(int row, int col) {
+        return this.text[row][col];
+    }
+
+    public void setCell(int row, int col, Object object) {
+        this.text[row][col] = object;
+        tblProcesses.updateUI();
     }
 }

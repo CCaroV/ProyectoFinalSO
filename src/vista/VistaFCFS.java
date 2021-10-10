@@ -1,8 +1,7 @@
-package FCFS;
+package vista;
 
 import java.awt.*;
 import javax.swing.*;
-import javax.swing.border.TitledBorder;
 
 /**
  *
@@ -16,10 +15,10 @@ public class VistaFCFS extends JFrame {
     private final JScrollPane panelScroll;
 
     //Definición del panel pincipal
-    JPanel mainPanel;
+    private JPanel mainPanel;
 
     //Definición de la dimensión del Frame
-    Dimension screenSize;
+    private final Dimension screenSize;
 
     /**
      * Constructor
@@ -38,9 +37,9 @@ public class VistaFCFS extends JFrame {
 
         //Parámetros del Frame
         screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        
+
         if (checkScreen()) {
-            this.setSize(1400, 720);
+            this.setSize(1200, 720);
         } else {
             this.setSize(screenSize.width, screenSize.height);
         }
@@ -49,21 +48,10 @@ public class VistaFCFS extends JFrame {
         this.setContentPane(panelScroll);
 
         //Definición del panel principal
-        mainPanel = new JPanel();
-        mainPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
-        mainPanel.setLayout(new GridBagLayout());
-        mainPanel.setBackground(Color.white);
-        
-        //Primera fila
-        placeComp(new MainProcess(), mainPanel, 0, 0, 2, 1);
-        placeComp(new MainTable(), mainPanel, 2, 0, 2, 1);
-        placeComp(new SummaryTable(), mainPanel, 4, 0, 1, 1);
-        
-        //Segunda fila
-        placeComp(new TimeTable(), mainPanel, 0, 1, 5, 1);
-        
-        //Tercera fila
-        placeComp(new PanelCanvas(), mainPanel, 0, 2, 5, 1);
+        this.mainPanel = new JPanel();
+        this.mainPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
+        this.mainPanel.setLayout(new GridBagLayout());
+        this.mainPanel.setBackground(Color.white);
 
         //Agrega el panel principal al scroll panel
         panelScroll.getViewport().add(mainPanel);
@@ -79,7 +67,7 @@ public class VistaFCFS extends JFrame {
      * @param w Ancho del componente
      * @param h Alto del componente
      */
-    public static void placeComp(Component comp, JPanel panel, int x, int y, int w, int h) {
+    public void placeComp(Component comp, JPanel panel, int x, int y, int w, int h) {
         GridBagConstraints cons = new GridBagConstraints();
         cons.gridx = x;
         cons.gridy = y;
@@ -89,7 +77,15 @@ public class VistaFCFS extends JFrame {
     }
 
     public boolean checkScreen() {
-        return this.screenSize.width >= 1800;
+        return this.screenSize.width >= 1280;
+    }
+
+    public JPanel getMainPanel() {
+        return mainPanel;
+    }
+
+    public void setMainPanel(JPanel mainPanel) {
+        this.mainPanel = mainPanel;
     }
 
 }

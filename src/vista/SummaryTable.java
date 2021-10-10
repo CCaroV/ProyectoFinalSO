@@ -1,4 +1,4 @@
-package FCFS;
+package vista;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -30,7 +30,7 @@ public class SummaryTable extends JPanel {
         this.text = new Object[7][2];
         
         this.setLayout(new BorderLayout());
-        this.setPreferredSize(new Dimension(350, 223));
+        this.setPreferredSize(new Dimension(350, 253));
         this.add(getTable(), BorderLayout.CENTER);
         this.setBackground(Color.white);
     }

@@ -1,7 +1,6 @@
 package modelo;
 
-import java.util.TimerTask;
-import javax.swing.Timer;
+import java.util.*;
 
 /**
  *
@@ -9,29 +8,38 @@ import javax.swing.Timer;
  * @author Jorge Andrés Bohórquez Castellanos
  * @author Santiago Ríos Valero
  */
-public class FCFS {
-    
-    //Timer timer = new Timer(0, listener);
-    
+public final class FCFS {
+
+    public Timer timer;
+    private final Object[][] text;
+    private int seconds;
+
+    public FCFS() {
+        this.text = new Object[6][5];
+        this.timer = new Timer();
+        this.seconds = 0;
+
+        seconds();
+    }
+
     TimerTask tarea = new TimerTask() {
-
-        int i = 0;
-
         @Override
         public void run() {
-            i++;
-            System.out.println("Segundo: " + i);
+            seconds++;
+            System.out.println("Segundo: " + seconds);
         }
     };
 
-    public FCFS() {
-    }
-    
-    
-
-    public void seconds() {    
-        //timer.schedule(tarea,0, 1000);
+    public void seconds() {
+        //timer.schedule(tarea, 0, 1000);
     }
 
-    
+    public int getSeconds() {
+        return seconds;
+    }
+
+    public void setSeconds(int seconds) {
+        this.seconds = seconds;
+    }
+
 }
