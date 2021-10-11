@@ -133,6 +133,7 @@ public class MainProcess extends JPanel {
         for (int i = 0; i < btnAdd.length; i++) {
             btnAdd[i].addActionListener(c);
             btnExec[i].addActionListener(c);
+            btnBlock[i].addActionListener(c);
             btnTerminate[i].addActionListener(c);
         }
     }

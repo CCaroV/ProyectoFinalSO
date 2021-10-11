@@ -11,21 +11,21 @@ public final class FCFS {
     private final Object[][] text;
 
     public FCFS() {
-        this.text = new Object[6][5];
+        this.text = new Object[6][6];
 
-        text[0][0] = "Firefox";
-        text[1][0] = "Spotify";
-        text[2][0] = "Chrome";
-        text[3][0] = "Matlab";
-        text[4][0] = "Steam";
-        text[5][0] = "Zoom";
+        text[0][0] = "Spotify";
+        text[1][0] = "Firefox";
+        text[2][0] = "Zoom";
+        text[3][0] = "Steam";
+        text[4][0] = "Matlab";
+        text[5][0] = "Chrome";
         
-        text[0][2] = 13;
-        text[1][2] = 5;
-        text[2][2] = 7;
-        text[3][2] = 2;
-        text[4][2] = 4;
-        text[5][2] = 11;
+        text[0][5] = false;
+        text[1][5] = false;
+        text[2][5] = false;
+        text[3][5] = false;
+        text[4][5] = false;
+        text[5][5] = false;
     }
 
     public Object getText(int row, int column) {
