@@ -29,7 +29,7 @@ public final class ControladorFCFS implements ActionListener {
     SummaryTable summaryTable;
     TimeTable timeTable;
     Timer timer;
-    
+
     private int seconds;
 
     public ControladorFCFS(VistaFCFS frame, FCFS modeloFCFS) {
@@ -42,20 +42,20 @@ public final class ControladorFCFS implements ActionListener {
         this.canvas = new PanelCanvas();
         this.summaryTable = new SummaryTable();
         this.timeTable = new TimeTable();
-        
+
         this.seconds = 0;
-        
+
         sendTimeToTable();
 
         //Define el intervalo de tiempo y el evento a escuchar
         this.timer = new Timer(1000, (ActionEvent ae) -> {
             seconds++;
-            setCellValue();
+            increaseCellValue();
             sendTimeToModel();
             sendTimeToTable();
         });
     }
-    
+
     public void setupFrame() {
         //Mostrar Frame
         vista.setVisible(true);
@@ -78,13 +78,24 @@ public final class ControladorFCFS implements ActionListener {
         this.process.asignListener(this);
     }
 
-    public void setCellValue() {
-        mainTable.setCell(0, 2, (int) modelo.getText(0, 2) + 1);
-        mainTable.setCell(1, 2, (int) modelo.getText(1, 2) + 1);
-        mainTable.setCell(2, 2, (int) modelo.getText(2, 2) + 1);
-        mainTable.setCell(3, 2, (int) modelo.getText(3, 2) + 1);
-        mainTable.setCell(4, 2, (int) modelo.getText(4, 2) + 1);
-        mainTable.setCell(5, 2, (int) modelo.getText(5, 2) + 1);
+    public void increaseCellValue() {
+        try {
+            for (int i = 0; i < 6; i++) {
+                for (int j = 1; j < 5; j++) {
+                    if (modelo.getText(i, j) != null) {
+                        mainTable.setCell(0, 1, (int) modelo.getText(0, 1) + 1);
+                        mainTable.setCell(1, 1, (int) modelo.getText(1, 1) + 1);
+                        mainTable.setCell(2, 1, (int) modelo.getText(2, 1) + 1);
+                        mainTable.setCell(3, 1, (int) modelo.getText(3, 1) + 1);
+                        mainTable.setCell(4, 1, (int) modelo.getText(4, 1) + 1);
+                        mainTable.setCell(5, 1, (int) modelo.getText(5, 1) + 1);
+                    }
+                }
+            }
+
+        } catch (Exception ee) {
+            System.out.println(ee);
+        }
     }
 
     public void sendTimeToModel() {
@@ -94,7 +105,7 @@ public final class ControladorFCFS implements ActionListener {
             }
         }
     }
-    
+
     public void sendTimeToTable() {
         for (int i = 0; i < 6; i++) {
             for (int j = 0; j < 5; j++) {
@@ -103,15 +114,21 @@ public final class ControladorFCFS implements ActionListener {
         }
         this.panelEndBegin.setLblTime(seconds);
     }
-
-
+    
+    public int getSecond() {
+        return this.seconds;
+    }
+    
     @Override
     public void actionPerformed(ActionEvent ae) {
         if (ae.getSource().equals(panelEndBegin.getBtnStart())) {
             timer.start();
         } else if (ae.getSource().equals(panelEndBegin.getBtnFinish())) {
             timer.stop();
+        } else if (ae.getSource().equals(process.getBtnAdd(0))) {
+            modelo.setText(0, 1, 0);
         }
+        
     }
 
 }
