@@ -13,12 +13,18 @@ public final class FCFS {
     public FCFS() {
         this.text = new Object[6][5];
 
+        text[0][1] = 1;
+        text[1][1] = 3;
+        text[2][1] = 6;
+        text[3][1] = 10;
+        text[4][1] = 8;
+        text[5][1] = 7;
     }
-    
+
     public Object getText(int row, int column) {
         return this.text[row][column];
     }
-    
+
     public void setText(int row, int column, Object object) {
         this.text[row][column] = object;
     }

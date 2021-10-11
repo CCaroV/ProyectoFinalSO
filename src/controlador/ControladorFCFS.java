@@ -46,6 +46,7 @@ public class ControladorFCFS implements ActionListener {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 setCellValue();
+                sendTimeToModel();
             }
         });
     }
@@ -76,12 +77,20 @@ public class ControladorFCFS implements ActionListener {
     }
 
     public void setCellValue() {
-        mainTable.setCell(0, 1, (int) mainTable.getCell(0, 1) + 1);
-        mainTable.setCell(1, 1, (int) mainTable.getCell(1, 1) + 1);
-        mainTable.setCell(2, 1, (int) mainTable.getCell(2, 1) + 1);
-        mainTable.setCell(3, 1, (int) mainTable.getCell(3, 1) + 1);
-        mainTable.setCell(4, 1, (int) mainTable.getCell(4, 1) + 1);
-        mainTable.setCell(5, 1, (int) mainTable.getCell(5, 1) + 1);
+        mainTable.setCell(0, 1, (int) modelo.getText(0, 1) + 1);
+        mainTable.setCell(1, 1, (int) modelo.getText(1, 1) + 1);
+        mainTable.setCell(2, 1, (int) modelo.getText(2, 1) + 1);
+        mainTable.setCell(3, 1, (int) modelo.getText(3, 1) + 1);
+        mainTable.setCell(4, 1, (int) modelo.getText(4, 1) + 1);
+        mainTable.setCell(5, 1, (int) modelo.getText(5, 1) + 1);
+    }
+
+    public void sendTimeToModel() {
+        for (int i = 0; i < 5; i++) {
+            for (int j = 0; j < 4; j++) {
+                modelo.setText(i, j, mainTable.getCell(i, j));
+            }
+        }
     }
 
     @Override
