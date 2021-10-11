@@ -13,6 +13,20 @@ public final class FCFS {
     public FCFS() {
         this.text = new Object[6][5];
 
+        text[0][0] = "Firefox";
+        text[1][0] = "Spotify";
+        text[2][0] = "Chrome";
+        text[3][0] = "Matlab";
+        text[4][0] = "Steam";
+        text[5][0] = "Zoom";
+        
+        text[0][1] = 1;
+        text[1][1] = 3;
+        text[2][1] = 6;
+        text[3][1] = 10;
+        text[4][1] = 8;
+        text[5][1] = 7;
+        
         text[0][2] = 13;
         text[1][2] = 5;
         text[2][2] = 7;
