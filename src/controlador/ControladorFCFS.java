@@ -80,7 +80,7 @@ public final class ControladorFCFS implements ActionListener {
     public void increaseCellValue() {
         try {
             for (int i = 0; i < 6; i++) {
-                for (int j = 2; j < 5; j++) {
+                for (int j = 3; j < 5; j++) {
                     if (modelo.getText(i, j) != null) {
                         modelo.setText(i, j, (int) modelo.getText(i, j) + 1);
                     }
