@@ -174,6 +174,16 @@ public final class ControladorFCFS implements ActionListener {
             execProcess(5);
         } else if (ae.getSource().equals(process.getBtnBlock(0))) {
             blockProcess(0);
+        } else if (ae.getSource().equals(process.getBtnBlock(1))) {
+            blockProcess(1);
+        } else if (ae.getSource().equals(process.getBtnBlock(2))) {
+            blockProcess(2);
+        } else if (ae.getSource().equals(process.getBtnBlock(3))) {
+            blockProcess(3);
+        } else if (ae.getSource().equals(process.getBtnBlock(4))) {
+            blockProcess(4);
+        } else if (ae.getSource().equals(process.getBtnBlock(5))) {
+            blockProcess(5);
         } else if (ae.getSource().equals(process.getBtnTerminate(0))) {
             finishProcess(0);
         } else if (ae.getSource().equals(process.getBtnTerminate(1))) {
