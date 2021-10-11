@@ -10,7 +10,15 @@ public final class FCFS {
 
     /**
      * Definición de columas de la varible text:
-     * Columna 0: Nombre del proceso
+     * Columna 0 (String): Nombre del proceso
+     * Columna 1 (int): Instante de llegada
+     * Columna 2 (int): Tiempo de ejecución
+     * Columna 3 (int): Instante de bloqueo
+     * Columna 4 (int): Tiempo de bloqueo
+     * Columna 5 (boolean): Estado de bloqueado
+     * Columna 6 (int): Variable auxiliar tiempo de ejecución
+     * Columna 7 (int): Variable auxiliar tiempo de bloqueo
+     * Columna 8 (boolean): Estado de ejecución
      */
     private final Object[][] text;
 
