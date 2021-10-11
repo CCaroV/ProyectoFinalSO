@@ -20,13 +20,6 @@ public final class FCFS {
         text[4][0] = "Steam";
         text[5][0] = "Zoom";
         
-        /*text[0][1] = 1;
-        text[1][1] = 3;
-        text[2][1] = 6;
-        text[3][1] = 10;
-        text[4][1] = 8;
-        text[5][1] = 7;*/
-        
         text[0][2] = 13;
         text[1][2] = 5;
         text[2][2] = 7;
