@@ -39,7 +39,7 @@ public class VistaFCFS extends JFrame {
         screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 
         if (checkScreen()) {
-            this.setSize(1200, 720);
+            this.setSize(1200, 800);
         } else {
             this.setSize(screenSize.width, screenSize.height);
         }
@@ -77,7 +77,7 @@ public class VistaFCFS extends JFrame {
     }
 
     public boolean checkScreen() {
-        return this.screenSize.width >= 1280;
+        return this.screenSize.height >= 800;
     }
 
     public JPanel getMainPanel() {
