@@ -112,8 +112,6 @@ public final class ControladorFCFS implements ActionListener {
             timer.stop();
         } else if (ae.getSource().equals(process.getBtnAdd(0))) {
             modelo.setValue(0, 1, seconds);
-        } else if (ae.getSource().equals(process.getBtnAdd(0))) {
-            modelo.setValue(0, 1, seconds);
         } else if (ae.getSource().equals(process.getBtnAdd(1))) {
             modelo.setValue(1, 1, seconds);
         } else if (ae.getSource().equals(process.getBtnAdd(2))) {
@@ -129,7 +127,7 @@ public final class ControladorFCFS implements ActionListener {
         } else if (ae.getSource().equals(process.getBtnBlock(0))) {
             modelo.setValue(0, 3, seconds);
             modelo.setValue(0, 4, 0);
-            
+            modelo.setValue(0, 5, true);
         }
         
     }
