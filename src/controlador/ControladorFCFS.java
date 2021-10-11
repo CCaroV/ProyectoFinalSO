@@ -81,7 +81,7 @@ public final class ControladorFCFS implements ActionListener {
         try {
             for (int i = 0; i < 6; i++) {
                 if (modelo.getValue(i, 2) != null
-                        && !(boolean) modelo.getValue(i, 5) 
+                        && !(boolean) modelo.getValue(i, 5)
                         && (boolean) modelo.getValue(i, 8)) {
                     modelo.setValue(i, 2, (int) modelo.getValue(i, 2) + 1);
                 } else if (modelo.getValue(i, 4) != null
@@ -107,6 +107,39 @@ public final class ControladorFCFS implements ActionListener {
         return this.seconds;
     }
 
+    public void execProcess(int row) {
+        for (int i = 0; i < 6; i++) {
+            if ((boolean) modelo.getValue(i, 8)) {
+                blockProcess(i);
+            }
+        }
+        modelo.setValue(row, 2, modelo.getValue(row, 6));
+        modelo.setValue(row, 7, modelo.getValue(row, 4));
+        modelo.setValue(row, 5, false);
+        modelo.setValue(row, 8, true);
+    }
+
+    public void blockProcess(int row) {
+        modelo.setValue(row, 3, seconds);
+        modelo.setValue(row, 4, modelo.getValue(row, 7));
+        modelo.setValue(row, 5, true);
+        modelo.setValue(row, 8, false);
+        modelo.setValue(row, 6, modelo.getValue(row, 2));
+        modelo.setValue(row, 9, (int) modelo.getValue(row, 9) + 1);
+    }
+
+    public void finishProcess(int row) {
+        modelo.setValue(row, 5, false);
+        modelo.setValue(row, 8, false);
+        int aux = 0;
+        for (int i = 0; i < 5; i++) {
+            if ((int) modelo.getValue(i, 9) > (int) modelo.getValue(i + 1, 9)) {
+                aux = i;
+            }
+        }
+        execProcess(aux);
+    }
+
     @Override
     public void actionPerformed(ActionEvent ae) {
         if (ae.getSource().equals(panelEndBegin.getBtnStart())) {
@@ -128,38 +161,31 @@ public final class ControladorFCFS implements ActionListener {
         } else if (ae.getSource().equals(process.getBtnAdd(5))) {
             modelo.setValue(5, 1, seconds);
         } else if (ae.getSource().equals(process.getBtnExec(0))) {
-            modelo.setValue(0, 2, modelo.getValue(0, 6));
-            modelo.setValue(0, 7, modelo.getValue(0, 4));
-            modelo.setValue(0, 5, false);
-            modelo.setValue(0, 8, true);
+            execProcess(0);
         } else if (ae.getSource().equals(process.getBtnExec(1))) {
-            modelo.setValue(1, 2, modelo.getValue(1, 6));
-            modelo.setValue(1, 5, false);
-            modelo.setValue(1, 8, true);
+            execProcess(1);
         } else if (ae.getSource().equals(process.getBtnExec(2))) {
-            modelo.setValue(2, 2, modelo.getValue(2, 6));
-            modelo.setValue(2, 5, false);
-            modelo.setValue(2, 8, true);
+            execProcess(2);
         } else if (ae.getSource().equals(process.getBtnExec(3))) {
-            modelo.setValue(3, 2, modelo.getValue(3, 6));
-            modelo.setValue(3, 5, false);
-            modelo.setValue(3, 8, true);
+            execProcess(3);
         } else if (ae.getSource().equals(process.getBtnExec(4))) {
-            modelo.setValue(4, 2, modelo.getValue(4, 6));
-            modelo.setValue(4, 5, false);
-            modelo.setValue(4, 8, true);
+            execProcess(4);
         } else if (ae.getSource().equals(process.getBtnExec(5))) {
-            modelo.setValue(5, 2, modelo.getValue(5, 6));
-            modelo.setValue(5, 5, false);
-            modelo.setValue(5, 8, true);
+            execProcess(5);
         } else if (ae.getSource().equals(process.getBtnBlock(0))) {
-            modelo.setValue(0, 3, seconds);
-            modelo.setValue(0, 4, modelo.getValue(0, 7));
-            modelo.setValue(0, 5, true);
-            modelo.setValue(0, 6, modelo.getValue(0, 2));
+            blockProcess(0);
         } else if (ae.getSource().equals(process.getBtnTerminate(0))) {
-            modelo.setValue(0, 5, false);
-            modelo.setValue(0, 8, false);
+            finishProcess(0);
+        } else if (ae.getSource().equals(process.getBtnTerminate(1))) {
+            finishProcess(1);
+        } else if (ae.getSource().equals(process.getBtnTerminate(2))) {
+            finishProcess(2);
+        } else if (ae.getSource().equals(process.getBtnTerminate(3))) {
+            finishProcess(3);
+        } else if (ae.getSource().equals(process.getBtnTerminate(4))) {
+            finishProcess(4);
+        } else if (ae.getSource().equals(process.getBtnTerminate(5))) {
+            finishProcess(5);
         }
     }
 
