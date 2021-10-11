@@ -23,6 +23,8 @@ public class PanelEndBegin extends JPanel {
     private final JLabel lblFinish;
     private final JLabel lblSeconds;
     private final JLabel lblTime;
+    private final JLabel lblStatus;
+    private final JLabel lblShowStatus;
 
     //Definición de botones
     private final JButton btnStart;
@@ -42,6 +44,10 @@ public class PanelEndBegin extends JPanel {
         this.lblSeconds.setFont(fontInter);
         this.lblTime = new JLabel();
         this.lblTime.setFont(fontInter);
+        this.lblStatus = new JLabel("Estado:");
+        this.lblStatus.setFont(fontInter);
+        this.lblShowStatus = new JLabel();
+        this.lblShowStatus.setFont(fontInter);
 
         this.btnStart = new JButton("Iniciar");
         this.btnStart.setFont(fontInter);
@@ -61,6 +67,8 @@ public class PanelEndBegin extends JPanel {
         this.add(btnFinish);
         this.add(lblSeconds);
         this.add(lblTime);
+        this.add(lblStatus);
+        this.add(lblShowStatus);
 
         this.lblBegin.setBounds(20, 30, 140, 30);
         this.btnStart.setBounds(20, 60, 100, 30);
@@ -70,6 +78,9 @@ public class PanelEndBegin extends JPanel {
         
         this.lblSeconds.setBounds(200, 30, 100, 30);
         this.lblTime.setBounds(200, 60, 100, 30);
+        
+        this.lblStatus.setBounds(200, 120, 100, 30);
+        this.lblShowStatus.setBounds(200, 150, 100, 30);
     }
 
     public JButton getBtnStart() {
@@ -82,6 +93,10 @@ public class PanelEndBegin extends JPanel {
     
     public void setLblTime(int time) {
         this.lblTime.setText(String.valueOf(time));
+    }
+    
+    public void setLblShowStatus(String text) {
+        this.lblShowStatus.setText(text);
     }
 
     public void asignListener(ControladorFCFS c) {
