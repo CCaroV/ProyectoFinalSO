@@ -18,7 +18,7 @@ import vista.PanelEndBegin;
  * @author Jorge Andrés Bohórquez Castellanos
  * @author Santiago Ríos Valero
  */
-public class ControladorFCFS implements ActionListener {
+public final class ControladorFCFS implements ActionListener {
 
     VistaFCFS vista;
     FCFS modelo;
@@ -29,6 +29,8 @@ public class ControladorFCFS implements ActionListener {
     SummaryTable summaryTable;
     TimeTable timeTable;
     Timer timer;
+    
+    private int seconds;
 
     public ControladorFCFS(VistaFCFS frame, FCFS modeloFCFS) {
 
@@ -40,20 +42,20 @@ public class ControladorFCFS implements ActionListener {
         this.canvas = new PanelCanvas();
         this.summaryTable = new SummaryTable();
         this.timeTable = new TimeTable();
+        
+        this.seconds = 0;
+        
+        sendTimeToTable();
 
         //Define el intervalo de tiempo y el evento a escuchar
-        this.timer = new Timer(1000, new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent ae) {
-                setCellValue();
-                sendTimeToModel();
-            }
+        this.timer = new Timer(1000, (ActionEvent ae) -> {
+            seconds++;
+            setCellValue();
+            sendTimeToModel();
+            sendTimeToTable();
         });
     }
-
-    public ControladorFCFS() {
-    }
-
+    
     public void setupFrame() {
         //Mostrar Frame
         vista.setVisible(true);
@@ -91,6 +93,15 @@ public class ControladorFCFS implements ActionListener {
                 modelo.setText(i, j, mainTable.getCell(i, j));
             }
         }
+    }
+    
+    public void sendTimeToTable() {
+        for (int i = 0; i < 6; i++) {
+            for (int j = 0; j < 5; j++) {
+                mainTable.setCell(i, j, modelo.getText(i, j));
+            }
+        }
+        this.panelEndBegin.setLblTime(seconds);
     }
 
 
