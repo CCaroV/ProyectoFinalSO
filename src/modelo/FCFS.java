@@ -11,7 +11,7 @@ public final class FCFS {
     private final Object[][] text;
 
     public FCFS() {
-        this.text = new Object[6][6];
+        this.text = new Object[6][7];
 
         text[0][0] = "Spotify";
         text[1][0] = "Firefox";
@@ -26,6 +26,13 @@ public final class FCFS {
         text[3][5] = false;
         text[4][5] = false;
         text[5][5] = false;
+        
+        text[0][6] = 0;
+        text[1][6] = 0;
+        text[2][6] = 0;
+        text[3][6] = 0;
+        text[4][6] = 0;
+        text[5][6] = 0;
     }
 
     public Object getValue(int row, int column) {
