@@ -80,10 +80,10 @@ public final class ControladorFCFS implements ActionListener {
     public void increaseCellValue() {
         try {
             for (int i = 0; i < 6; i++) {
-                if (modelo.getText(i, 2) != null && modelo.getText(i, 4) != null
-                        || !(boolean) modelo.getText(i, 5)) {
-                    modelo.setText(i, 2, (int) modelo.getText(i, 2) + 1);
-                    modelo.setText(i, 4, (int) modelo.getText(i, 4) + 1);
+                if (modelo.getValue(i, 2) != null && modelo.getValue(i, 4) != null
+                        || !(boolean) modelo.getValue(i, 5)) {
+                    modelo.setValue(i, 2, (int) modelo.getValue(i, 2) + 1);
+                    modelo.setValue(i, 4, (int) modelo.getValue(i, 4) + 1);
                 }
             }
         } catch (Exception ee) {
@@ -94,7 +94,7 @@ public final class ControladorFCFS implements ActionListener {
     public void sendTimeToTable() {
         for (int i = 0; i < 6; i++) {
             for (int j = 0; j < 5; j++) {
-                mainTable.setCell(i, j, modelo.getText(i, j));
+                mainTable.setCell(i, j, modelo.getValue(i, j));
             }
         }
         this.panelEndBegin.setLblTime(seconds);
@@ -111,26 +111,27 @@ public final class ControladorFCFS implements ActionListener {
         } else if (ae.getSource().equals(panelEndBegin.getBtnFinish())) {
             timer.stop();
         } else if (ae.getSource().equals(process.getBtnAdd(0))) {
-            modelo.setText(0, 1, seconds);
+            modelo.setValue(0, 1, seconds);
         } else if (ae.getSource().equals(process.getBtnAdd(0))) {
-            modelo.setText(0, 1, seconds);
+            modelo.setValue(0, 1, seconds);
         } else if (ae.getSource().equals(process.getBtnAdd(1))) {
-            modelo.setText(1, 1, seconds);
+            modelo.setValue(1, 1, seconds);
         } else if (ae.getSource().equals(process.getBtnAdd(2))) {
-            modelo.setText(2, 1, seconds);
+            modelo.setValue(2, 1, seconds);
         } else if (ae.getSource().equals(process.getBtnAdd(3))) {
-            modelo.setText(3, 1, seconds);
+            modelo.setValue(3, 1, seconds);
         } else if (ae.getSource().equals(process.getBtnAdd(4))) {
-            modelo.setText(4, 1, seconds);
+            modelo.setValue(4, 1, seconds);
         } else if (ae.getSource().equals(process.getBtnAdd(5))) {
-            modelo.setText(5, 1, seconds);
+            modelo.setValue(5, 1, seconds);
         } else if (ae.getSource().equals(process.getBtnExec(0))) {
-            modelo.setText(0, 2, 0);
+            modelo.setValue(0, 2, 0);
         } else if (ae.getSource().equals(process.getBtnBlock(0))) {
-            modelo.setText(0, 3, seconds);
-            modelo.setText(0, 4, 0);
+            modelo.setValue(0, 3, seconds);
+            modelo.setValue(0, 4, 0);
+            
         }
-
+        
     }
 
 }

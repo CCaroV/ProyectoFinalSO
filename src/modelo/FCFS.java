@@ -28,11 +28,11 @@ public final class FCFS {
         text[5][5] = false;
     }
 
-    public Object getText(int row, int column) {
+    public Object getValue(int row, int column) {
         return this.text[row][column];
     }
 
-    public void setText(int row, int column, Object object) {
+    public void setValue(int row, int column, Object object) {
         this.text[row][column] = object;
     }
 }
