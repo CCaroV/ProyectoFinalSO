@@ -1,48 +1,41 @@
-package vista;
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package menuPrincipal;
 
-import java.awt.*;
-import javax.swing.*;
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Dimension;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.HeadlessException;
+import java.awt.Toolkit;
+import javax.swing.BorderFactory;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 
 /**
  *
- * @author Christian Caro Vargas
- * @author Jorge Andrés Bohórquez Castellanos
- * @author Santiago Ríos Valero
+ * @author fedc
  */
-public class VistaFCFS extends JFrame {
+public class MenuPrincipal extends JFrame {
 
-    //Definición de scrollpPane
     private final JScrollPane panelScroll;
 
-    //Definición del panel pincipal
     private JPanel mainPanel;
 
-    //Definición de la dimensión del Frame
     private final Dimension screenSize;
 
-    /**
-     * Constructor
-     *
-     * @throws HeadlessException
-     */
-    public VistaFCFS() throws HeadlessException {
-        //Título
-        super("Primero en llegar primero en salir");
+    public MenuPrincipal() throws HeadlessException {
+        super("Proyecto final");
 
-        //Definición de fuentes
-        //fontInter = new Font("Inter Medium", Font.PLAIN, 15);
-        //Definición de Scroll Pane
         this.panelScroll = new JScrollPane(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
                 JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 
-        //Parámetros del Frame
         this.screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 
-        if (checkScreen()) {
-            this.setSize(1200, 800);
-        } else {
-            this.setSize(screenSize.width, screenSize.height);
-        }
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
         this.setContentPane(panelScroll);
@@ -76,10 +69,6 @@ public class VistaFCFS extends JFrame {
         panel.add(comp, cons);
     }
 
-    public boolean checkScreen() {
-        return this.screenSize.height >= 800;
-    }
-
     public JPanel getMainPanel() {
         return mainPanel;
     }
@@ -87,5 +76,4 @@ public class VistaFCFS extends JFrame {
     public void setMainPanel(JPanel mainPanel) {
         this.mainPanel = mainPanel;
     }
-
 }

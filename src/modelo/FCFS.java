@@ -14,8 +14,9 @@ public final class FCFS {
      * ejecución Columna 3 (int): Instante de bloqueo Columna 4 (int): Tiempo de
      * bloqueo Columna 5 (boolean): Estado de bloqueado Columna 6 (int):
      * Variable auxiliar tiempo de ejecución Columna 7 (int): Variable auxiliar
-     * tiempo de bloqueo Columna 8 (boolean): Estado de ejecución Columna 9
-     * (int): Posición en la cola
+     * tiempo de bloqueo Columna 8 (boolean): Estado de ejecución 
+     * Columna 9 (int): Posición en la cola
+     * 
      */
     private final Object[][] text;
 
@@ -37,7 +38,7 @@ public final class FCFS {
         text[4][5] = false;
         text[5][5] = false;
 
-        text[0][8] = (boolean) false;
+        text[0][8] = false;
         text[1][8] = false;
         text[2][8] = false;
         text[3][8] = false;

@@ -133,7 +133,9 @@ public final class ControladorFCFS implements ActionListener {
         modelo.setValue(row, 8, false);
         int aux = 0;
         for (int i = 0; i < 5; i++) {
-            if ((int) modelo.getValue(i, 9) > (int) modelo.getValue(i + 1, 9)) {
+            //No funciona como debería
+            if ((int) modelo.getValue(i, 9) > (int) modelo.getValue(i + 1, 9) 
+                    && (boolean) modelo.getValue(i, 5)) {
                 aux = i;
             }
         }
