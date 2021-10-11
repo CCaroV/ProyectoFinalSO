@@ -51,7 +51,6 @@ public final class ControladorFCFS implements ActionListener {
         this.timer = new Timer(1000, (ActionEvent ae) -> {
             seconds++;
             increaseCellValue();
-            //sendTimeToModel();
             sendTimeToTable();
         });
     }
@@ -83,18 +82,13 @@ public final class ControladorFCFS implements ActionListener {
             for (int i = 0; i < 6; i++) {
                 for (int j = 2; j < 5; j++) {
                     if (modelo.getText(i, j) != null) {
-                        mainTable.setCell(i, j, (int) modelo.getText(i, j) + 1);
-                        mainTable.setCell(i, j, (int) modelo.getText(i, j) + 1);
-                        mainTable.setCell(i, j, (int) modelo.getText(i, j) + 1);
-                        mainTable.setCell(i, j, (int) modelo.getText(i, j) + 1);
-                        mainTable.setCell(i, j, (int) modelo.getText(i, j) + 1);
-                        mainTable.setCell(i, j, (int) modelo.getText(i, j) + 1);
+                        modelo.setText(i, j, (int) modelo.getText(i, j) + 1);
                     }
                 }
             }
 
         } catch (Exception ee) {
-            //System.out.println(ee);
+            System.out.println(ee);
         }
     }
 
@@ -106,11 +100,11 @@ public final class ControladorFCFS implements ActionListener {
         }
         this.panelEndBegin.setLblTime(seconds);
     }
-    
+
     public int getSecond() {
         return this.seconds;
     }
-    
+
     @Override
     public void actionPerformed(ActionEvent ae) {
         if (ae.getSource().equals(panelEndBegin.getBtnStart())) {
@@ -120,7 +114,7 @@ public final class ControladorFCFS implements ActionListener {
         } else if (ae.getSource().equals(process.getBtnAdd(0))) {
             modelo.setText(0, 1, seconds);
         }
-        
+
     }
 
 }
