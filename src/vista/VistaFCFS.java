@@ -9,7 +9,7 @@ import javax.swing.*;
  * @author Jorge Andrés Bohórquez Castellanos
  * @author Santiago Ríos Valero
  */
-public class VistaFCFS extends JFrame {
+public final class VistaFCFS extends JFrame {
 
     //Definición de scrollpPane
     private final JScrollPane panelScroll;
