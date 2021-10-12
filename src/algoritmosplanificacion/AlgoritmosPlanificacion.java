@@ -2,8 +2,13 @@ package algoritmosplanificacion;
 
 import vista.VistaFCFS;
 import vista.VistaSJF;
-import controlador.*;
+
+import javax.tools.StandardJavaFileManager;
+
+import controlador.ControladorFCFS;
+import controlador.ControladorSFJ;
 import modelo.FCFS;
+import modelo.SFJ;
 
 /**
  *
@@ -20,7 +25,8 @@ public class AlgoritmosPlanificacion {
 
         // VistaFCFS vistaFCFS = new VistaFCFS();
         VistaSJF vistaSJF = new VistaSJF();
-        FCFS modelo = new FCFS();
+        // FCFS modelo = new FCFS();
+        SFJ modelo = new SFJ();
         // ControladorFCFS controlador = new ControladorFCFS(vistaFCFS, modelo);
         ControladorSFJ controladorSFJ = new ControladorSFJ(vistaSJF, modelo);
 

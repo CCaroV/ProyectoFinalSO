@@ -1,6 +1,8 @@
 package vista;
 
 import controlador.ControladorFCFS;
+import controlador.ControladorSFJ;
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -130,6 +132,15 @@ public class MainProcess extends JPanel {
     }
     
     public void asignListener(ControladorFCFS c) {
+        for (int i = 0; i < btnAdd.length; i++) {
+            btnAdd[i].addActionListener(c);
+            btnExec[i].addActionListener(c);
+            btnBlock[i].addActionListener(c);
+            btnTerminate[i].addActionListener(c);
+        }
+    }
+
+    public void asignListener(ControladorSFJ c) {
         for (int i = 0; i < btnAdd.length; i++) {
             btnAdd[i].addActionListener(c);
             btnExec[i].addActionListener(c);

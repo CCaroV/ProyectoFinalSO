@@ -6,10 +6,15 @@ package controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
-import vista.*;
 import javax.swing.Timer;
-import modelo.*;
+import vista.MainProcess;
+import vista.MainTable;
+import vista.PanelCanvas;
+import vista.SummaryTable;
+import vista.TimeTable;
+import vista.VistaSJF;
+import vista.PanelEndBegin;
+import modelo.SFJ;
 
 /**
  *
@@ -17,9 +22,10 @@ import modelo.*;
  * @author Jorge Andrés Bohórquez Castellanos
  * @author Santiago Ríos Valero
  */
-public class ControladorSFJ implements ActionListener {
+public final class ControladorSFJ implements ActionListener {
 
     VistaSJF vista;
+    SFJ modelo;
     MainProcess process;
     PanelEndBegin panelEndBegin;
     MainTable mainTable;
@@ -29,11 +35,11 @@ public class ControladorSFJ implements ActionListener {
     Timer timer;
 
     private int seconds;
-
-    public ControladorSFJ(VistaSJF frame, FCFS modeloFCFS) {
+    
+    public ControladorSFJ(VistaSJF frame, SFJ modeloSJF) {
 
         this.vista = frame;
-        // this.modelo = modeloFCFS;
+        this.modelo = modeloSJF;
         this.process = new MainProcess();
         this.panelEndBegin = new PanelEndBegin();
         this.mainTable = new MainTable();
@@ -70,21 +76,21 @@ public class ControladorSFJ implements ActionListener {
     }
 
     public void setupListeners() {
-        // this.panelEndBegin.asignListener(this);
-        // this.process.asignListener(this);
+        this.panelEndBegin.asignListener(this);
+        this.process.asignListener(this);
     }
 
     public void increaseCellValue() {
         try {
             for (int i = 0; i < 6; i++) {
-                // if (modelo.getValue(i, 2) != null
-                //         && !(boolean) modelo.getValue(i, 5)
-                //         && (boolean) modelo.getValue(i, 8)) {
-                //     modelo.setValue(i, 2, (int) modelo.getValue(i, 2) + 1);
-                // } else if (modelo.getValue(i, 4) != null
-                //         && (boolean) modelo.getValue(i, 5)) {
-                //     modelo.setValue(i, 4, (int) modelo.getValue(i, 4) + 1);
-                // }
+                if (modelo.getValue(i, 2) != null
+                        && !(boolean) modelo.getValue(i, 5)
+                        && (boolean) modelo.getValue(i, 8)) {
+                    modelo.setValue(i, 2, (int) modelo.getValue(i, 2) + 1);
+                } else if (modelo.getValue(i, 4) != null
+                        && (boolean) modelo.getValue(i, 5)) {
+                    modelo.setValue(i, 4, (int) modelo.getValue(i, 4) + 1);
+                }
             }
         } catch (Exception ee) {
             System.out.println("Objeto vacío");
