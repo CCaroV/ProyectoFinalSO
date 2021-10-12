@@ -17,15 +17,15 @@ public class AlgoritmosPlanificacion {
      */
     public static void main(String[] args) {
 
-        // VistaFCFS vistaFCFS = new VistaFCFS();
+        VistaFCFS vistaFCFS = new VistaFCFS();
         // VistaSFJ vistaSFJ = new VistaSFJ();
-        VistaSRTF vistaSRTF = new VistaSRTF();
-        // FCFS modelo = new FCFS();
+        // VistaSRTF vistaSRTF = new VistaSRTF();
+        FCFS modelo = new FCFS();
         // SFJ modelo = new SFJ();
-        SRTF modelo = new SRTF();
-        // ControladorFCFS controlador = new ControladorFCFS(vistaFCFS, modelo);
+        // SRTF modelo = new SRTF();
+        ControladorFCFS controlador = new ControladorFCFS(vistaFCFS, modelo);
         // ControladorSFJ controlador = new ControladorSFJ(vistaSFJ, modelo);
-        ControladorSRTF controlador = new ControladorSRTF(vistaSRTF, modelo);
+        // ControladorSRTF controlador = new ControladorSRTF(vistaSRTF, modelo);
         javax.swing.SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {

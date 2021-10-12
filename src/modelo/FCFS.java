@@ -16,6 +16,7 @@ public final class FCFS {
      * Variable auxiliar tiempo de ejecución Columna 7 (int): Variable auxiliar
      * tiempo de bloqueo Columna 8 (boolean): Estado de ejecución 
      * Columna 9 (int): Posición en la cola
+     * Columna 1- (int): Segundo exacto en que se ejecta el proceso
      * 
      */
     private final Object[][] text;
@@ -24,7 +25,7 @@ public final class FCFS {
 
     public FCFS() {
 
-        this.text = new Object[6][10];
+        this.text = new Object[6][11];
         this.text2 = new Object[6][9]; 
 
 
@@ -57,7 +58,7 @@ public final class FCFS {
         text2[4][0] = "Matlab";
         text2[5][0] = "Chrome";
 
-        for (int i = 1; i < 10; i++) {
+        for (int i = 1; i < 11; i++) {
             if (i != 5 && i != 8 && i!=10) {
                 text[0][i] = 0;
                 text[1][i] = 0;

@@ -159,7 +159,7 @@ public final class ControladorFCFS implements ActionListener {
         modelo.setValue2(row, 6, (int) modelo.getValue2(row, 5) - (int) modelo.getValue(row, 1));
         modelo.setValue2(row, 7,
                 Double.valueOf((int) modelo.getValue2(row, 6)) / Double.valueOf((int) modelo.getValue(row, 1)));
-        modelo.setValue2(row, 8, (int) modelo.getValue(row, 11) - (int) modelo.getValue(row, 1));
+        modelo.setValue2(row, 8, ((int) modelo.getValue(row, 2) - (int) modelo.getValue(row, 10)* -1));
         if ((int) modelo.getValue2(row, 4) - (int) modelo.getValue(row, 1) - (int) modelo.getValue2(row, 3)
                 - (int) modelo.getValue(row, 11) < 0) {
             modelo.setValue2(row, 2, ((int) modelo.getValue2(row, 4) - (int) modelo.getValue(row, 1))
@@ -194,16 +194,22 @@ public final class ControladorFCFS implements ActionListener {
             modelo.setValue(5, 1, seconds);
         } else if (ae.getSource().equals(process.getBtnExec(0))) {
             execProcess(0);
+            modelo.setValue(0, 10, this.seconds);
         } else if (ae.getSource().equals(process.getBtnExec(1))) {
             execProcess(1);
+            modelo.setValue(1, 10, this.seconds);
         } else if (ae.getSource().equals(process.getBtnExec(2))) {
             execProcess(2);
+            modelo.setValue(2, 10, this.seconds);
         } else if (ae.getSource().equals(process.getBtnExec(3))) {
             execProcess(3);
+            modelo.setValue(3, 10, this.seconds);
         } else if (ae.getSource().equals(process.getBtnExec(4))) {
             execProcess(4);
+            modelo.setValue(4, 10, this.seconds);
         } else if (ae.getSource().equals(process.getBtnExec(5))) {
             execProcess(5);
+            modelo.setValue(5, 10, this.seconds);
         } else if (ae.getSource().equals(process.getBtnBlock(0))) {
             blockProcess(0);
         } else if (ae.getSource().equals(process.getBtnBlock(1))) {
