@@ -142,6 +142,8 @@ public final class ControladorFCFS implements ActionListener {
     }
 
     public void finishProcess(int row) {
+      
+        
         modelo.setValue(row, 5, false);
         modelo.setValue(row, 8, false);
         modelo.setValue(row, 9, 0);
@@ -154,6 +156,18 @@ public final class ControladorFCFS implements ActionListener {
             }
         }
         execProcess(position);
+        
+            modelo.setValue2(row, 4, seconds);
+            modelo.setValue2(row, 5, seconds - (int)modelo.getValue(row, 1));
+            modelo.setValue2(row, 6, (int)modelo.getValue2(row, 5) - (int)modelo.getValue(row, 10));
+            modelo.setValue2(row, 7, Double.valueOf((int)modelo.getValue2(row, 5)) / Double.valueOf((int)modelo.getValue(row, 10)));
+            modelo.setValue2(row, 8, (int)modelo.getValue(row, 11) - (int)modelo.getValue(row, 1));
+            if ((int)modelo.getValue2(row, 4) - (int)modelo.getValue(row, 1) - (int)modelo.getValue2(row, 3) - (int)modelo.getValue(row, 11) < 0){
+                modelo.setValue2(row, 2, ((int)modelo.getValue2(row, 4) - (int)modelo.getValue(row, 1)) - (int)modelo.getValue2(row, 3) - (int)modelo.getValue(row, 11)*(-1));
+            }else if ((int)modelo.getValue2(row, 4) - (int)modelo.getValue(row, 1) - (int)modelo.getValue2(row, 3) - (int)modelo.getValue(row, 11) > 0){
+                modelo.setValue2(row, 2, ((int)modelo.getValue2(row, 4) - (int)modelo.getValue(row, 1)) - (int)modelo.getValue2(row, 3) - (int)modelo.getValue(row, 11));
+            }
+         
     }
 
     @Override

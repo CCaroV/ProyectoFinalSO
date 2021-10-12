@@ -49,6 +49,14 @@ public final class FCFS {
         text[4][8] = false;
         text[5][8] = false;
 
+
+        text2[0][0] = "Spotify";
+        text2[1][0] = "Firefox";
+        text2[2][0] = "Zoom";
+        text2[3][0] = "Steam";
+        text2[4][0] = "Matlab";
+        text2[5][0] = "Chrome";
+
         for (int i = 1; i < 10; i++) {
             if (i != 5 && i != 8 && i!=10) {
                 text[0][i] = 0;
@@ -57,6 +65,16 @@ public final class FCFS {
                 text[3][i] = 0;
                 text[4][i] = 0;
                 text[5][i] = 0;
+            }
+        }
+        for (int i = 1; i < 9; i++) {
+            if (i != 5 && i != 8 && i !=1)  {
+                text2[0][i] = 0;
+                text2[1][i] = 0;
+                text2[2][i] = 0;
+                text2[3][i] = 0;
+                text2[4][i] = 0;
+                text2[5][i] = 0;
             }
         }
     }
