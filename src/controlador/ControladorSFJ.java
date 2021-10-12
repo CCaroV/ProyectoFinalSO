@@ -50,12 +50,13 @@ public final class ControladorSFJ implements ActionListener {
         this.seconds = 0;
 
         sendTimeToTable();
-
+        sendTimeToTable2();
         //Define el intervalo de tiempo y el evento a escuchar
         this.timer = new Timer(1000, (ActionEvent ae) -> {
             seconds++;
             increaseCellValue();
             sendTimeToTable();
+            sendTimeToTable2();
         });
     }
     public void setupFrame() {
@@ -88,6 +89,7 @@ public final class ControladorSFJ implements ActionListener {
                         && (boolean) modelo.getValue(i, 8)
                         && (int) modelo.getValue(i, 2) > 0) {
                     modelo.setValue(i, 2, (int) modelo.getValue(i, 2) - 1);
+                    modelo.setValue2(i, 1, (int) modelo.getValue2(i, 1) - 1);
                 } else if (modelo.getValue(i, 4) != null
                         && (boolean) modelo.getValue(i, 5)) {
                     modelo.setValue(i, 4, (int) modelo.getValue(i, 4) + 1);
@@ -114,6 +116,15 @@ public final class ControladorSFJ implements ActionListener {
         this.panelEndBegin.setLblTime(seconds);
     }
 
+    public void sendTimeToTable2(){
+        for (int i = 0; i < 6; i++) {
+            for (int j = 0; j < 9; j++) {
+                timeTable.setCell(i, j, modelo.getValue2(i, j));
+            }
+        }
+        this.panelEndBegin.setLblTime(seconds);
+    }
+
     public int getSecond() {
         return this.seconds;
     }
@@ -132,11 +143,14 @@ public final class ControladorSFJ implements ActionListener {
 
     private void blockProcess(int row) {
         modelo.setValue(row, 3, seconds);
-        modelo.setValue(row, 4, modelo.getValue(row, 7));
+        // modelo.setValue(row, 4, modelo.getValue(row, 7));
+        modelo.setValue2(row, 3, modelo.getValue(row, 7));
+        System.out.println(modelo.getValue(row, 7));
         modelo.setValue(row, 5, true);
         modelo.setValue(row, 8, false);
         modelo.setValue(row, 6, modelo.getValue(row, 2));
         modelo.setValue(row, 9, (int) modelo.getValue(row, 9) + 1);
+        
     }
 
     private void finishProcess(int row) {
