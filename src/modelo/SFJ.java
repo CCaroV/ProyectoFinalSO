@@ -38,7 +38,7 @@ public final class SFJ {
         text[4][5] = false;
         text[5][5] = false;
 
-        text[0][8] = false;
+        text[0][8] = true;
         text[1][8] = false;
         text[2][8] = false;
         text[3][8] = false;
@@ -47,12 +47,12 @@ public final class SFJ {
 
         for (int i = 1; i < 10; i++) {
             if (i != 5 && i != 8) {
-                text[0][i] = 0;
-                text[1][i] = 0;
-                text[2][i] = 0;
-                text[3][i] = 0;
-                text[4][i] = 0;
-                text[5][i] = 0;
+                text[0][i] = 7;
+                text[1][i] = 69;
+                text[2][i] = 429;
+                text[3][i] = 43;
+                text[4][i] = 54;
+                text[5][i] = 1;
             }
         }
     }

@@ -30,7 +30,6 @@ public class AlgoritmosPlanificacion {
         // ControladorFCFS controlador = new ControladorFCFS(vistaFCFS, modelo);
         ControladorSFJ controladorSFJ = new ControladorSFJ(vistaSJF, modelo);
 
-
         javax.swing.SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
