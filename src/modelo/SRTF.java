@@ -20,12 +20,26 @@ public final class SRTF {
      * Columna 7 (int): Variable auxiliar tiempo de bloqueo 
      * Columna 8 (boolean): Estado de ejecución 
      * Columna 9 (int): Posición en la cola
+     * Columna 10 (int): Vectorsito
+     * Columna 11 (int): Tiempo hasta que se oprime ejecución
+     * 
+     * Definición de columas de la varible text2: 
+     * Columna 0 (String): Nombre del proceso 
+     * Columna 1 (int): Ejecución 
+     * Columna 2 (int): Espera 
+     * Columna 3 (int): Tiempo bloqueo 
+     * Columna 4 (int): Instante fin proceso 
+     * Columna 5 (boolean): retorno 
+     * Columna 6 (int): Variable auxiliar tiempo de ejecución 
+     * Columna 7 (int): Variable auxiliar tiempo de bloqueo 
+     * Columna 8 (boolean): Estado de ejecución 
+     * Columna 9 (int): Posición en la cola
      */
     private final Object[][] text;
     private final Object[][] text2;
     public SRTF() {
 
-        this.text = new Object[6][10];
+        this.text = new Object[6][12];
         this.text2 = new Object[6][9]; 
         text[0][0] = "Spotify";
         text[1][0] = "Firefox";
@@ -41,6 +55,13 @@ public final class SRTF {
         text[4][2] = 2;
         text[5][2] = 13;
 
+        text[0][10] = 5;
+        text[1][10] = 4;
+        text[2][10] = 11;
+        text[3][10] = 7;
+        text[4][10] = 2;
+        text[5][10] = 13;
+
         text[0][5] = false;
         text[1][5] = false;
         text[2][5] = false;
@@ -55,8 +76,8 @@ public final class SRTF {
         text[4][8] = false;
         text[5][8] = false;
 
-        for (int i = 1; i < 10; i++) {
-            if (i != 5 && i != 8 && i !=2)  {
+        for (int i = 1; i < 12; i++) {
+            if (i != 5 && i != 8 && i !=2 && i!=10)  {
                 text[0][i] = 0;
                 text[1][i] = 0;
                 text[2][i] = 0;

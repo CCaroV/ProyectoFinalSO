@@ -77,18 +77,36 @@ public final class ControladorSRTF implements ActionListener {
     public void increaseCellValue() {
         try {
             for (int i = 0; i < 6; i++) {
-                if (modelo.getValue(i, 2) != null && !(boolean) modelo.getValue(i, 5) && (boolean) modelo.getValue(i, 8)
+                if (modelo.getValue(i, 2) != null
+                        && !(boolean) modelo.getValue(i, 5)
+                        && (boolean) modelo.getValue(i, 8)
                         && (int) modelo.getValue(i, 2) > 0) {
                     modelo.setValue(i, 2, (int) modelo.getValue(i, 2) - 1);
-                    // modelo.setValue2(i, 1, (int) modelo.getValue2(i, 1) - 1);
-                } else if (modelo.getValue(i, 4) != null && (boolean) modelo.getValue(i, 5)) {
+                    modelo.setValue2(i, 1, (int) modelo.getValue2(i, 1) - 1);
+                    if((int)modelo.getValue2(i, 1)==0){
+                        modelo.setValue2(i, 4, seconds);
+                        modelo.setValue2(i, 5, seconds - (int)modelo.getValue(i, 1));
+                        modelo.setValue2(i, 6, (int)modelo.getValue2(i, 5) - (int)modelo.getValue(i, 10));
+                        modelo.setValue2(i, 7, Double.valueOf((int)modelo.getValue2(i, 5)) / Double.valueOf((int)modelo.getValue(i, 10)));
+                        // modelo.setValue2(i, 8, (int)modelo.getValue(i, 11) - (int)modelo.getValue(i, 1));
+                        modelo.setValue2(i, 8, (int)modelo.getValue(i, 1));
+                        if ((int)modelo.getValue2(i, 4) - (int)modelo.getValue(i, 1) - (int)modelo.getValue2(i, 3) - (int)modelo.getValue(i, 11) < 0){
+                            modelo.setValue2(i, 2, ((int)modelo.getValue2(i, 4) - (int)modelo.getValue(i, 1)) - (int)modelo.getValue2(i, 3) - (int)modelo.getValue(i, 11)*(-1));
+                        }else if ((int)modelo.getValue2(i, 4) - (int)modelo.getValue(i, 1) - (int)modelo.getValue2(i, 3) - (int)modelo.getValue(i, 11) > 0){
+                            modelo.setValue2(i, 2, ((int)modelo.getValue2(i, 4) - (int)modelo.getValue(i, 1)) - (int)modelo.getValue2(i, 3) - (int)modelo.getValue(i, 11));
+                        }
+                    }                    
+                } else if (modelo.getValue(i, 4) != null
+                        && (boolean) modelo.getValue(i, 5)) {
                     modelo.setValue(i, 4, (int) modelo.getValue(i, 4) + 1);
+                    modelo.setValue2(i, 3, (int) modelo.getValue(i, 4));
                 }
             }
         } catch (Exception ee) {
-            System.out.println("Objeto vacío");
+            System.out.println(ee);
         }
     }
+
 
     public void checkExec(int row) {
         if ((int) modelo.getValue(row, 2) == 0) {
@@ -121,7 +139,6 @@ public final class ControladorSRTF implements ActionListener {
 
     public void execProcess(int row) {
         for (int i = 0; i < 6; i++) {
-            System.out.println("holaaa");
 
             if ((boolean) modelo.getValue(i, 8) && (int) modelo.getValue(i, 2) > 0) {
                 blockProcess(i);
