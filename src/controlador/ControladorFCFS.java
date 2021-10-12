@@ -1,11 +1,6 @@
 package controlador;
 
-import vista.MainProcess;
-import vista.MainTable;
-import vista.PanelCanvas;
-import vista.SummaryTable;
-import vista.TimeTable;
-import vista.VistaFCFS;
+import vista.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.Timer;
@@ -46,12 +41,13 @@ public final class ControladorFCFS implements ActionListener {
         this.seconds = 0;
 
         sendTimeToTable();
-
+        sendTimeToTable2();
         //Define el intervalo de tiempo y el evento a escuchar
         this.timer = new Timer(1000, (ActionEvent ae) -> {
             seconds++;
             increaseCellValue();
             sendTimeToTable();
+            sendTimeToTable2();
         });
     }
 
@@ -98,6 +94,16 @@ public final class ControladorFCFS implements ActionListener {
         for (int i = 0; i < 6; i++) {
             for (int j = 0; j < 5; j++) {
                 mainTable.setCell(i, j, modelo.getValue(i, j));
+            }
+        }
+        this.panelEndBegin.setLblTime(seconds);
+    }
+
+
+    public void sendTimeToTable2(){
+        for (int i = 0; i < 6; i++) {
+            for (int j = 0; j < 9; j++) {
+                timeTable.setCell(i, j, modelo.getValue2(i, j));
             }
         }
         this.panelEndBegin.setLblTime(seconds);

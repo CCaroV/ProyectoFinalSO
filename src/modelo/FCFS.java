@@ -19,10 +19,14 @@ public final class FCFS {
      * 
      */
     private final Object[][] text;
+    private final Object[][] text2;
+
 
     public FCFS() {
 
         this.text = new Object[6][10];
+        this.text2 = new Object[6][9]; 
+
 
         text[0][0] = "Spotify";
         text[1][0] = "Firefox";
@@ -46,7 +50,7 @@ public final class FCFS {
         text[5][8] = false;
 
         for (int i = 1; i < 10; i++) {
-            if (i != 5 && i != 8) {
+            if (i != 5 && i != 8 && i!=10) {
                 text[0][i] = 0;
                 text[1][i] = 0;
                 text[2][i] = 0;
@@ -64,4 +68,13 @@ public final class FCFS {
     public void setValue(int row, int column, Object object) {
         this.text[row][column] = object;
     }
+
+    public Object getValue2(int row, int column) {
+        return this.text2[row][column];
+    }
+
+    public void setValue2(int row, int column, Object object) {
+        this.text2[row][column] = object;
+    }
 }
+

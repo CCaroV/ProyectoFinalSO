@@ -1,19 +1,9 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.Timer;
-import vista.MainProcess;
-import vista.MainTable;
-import vista.PanelCanvas;
-import vista.SummaryTable;
-import vista.TimeTable;
-import vista.VistaSFJ;
-import vista.PanelEndBegin;
+import vista.*;
 import modelo.SFJ;
 
 /**
@@ -46,7 +36,6 @@ public final class ControladorSFJ implements ActionListener {
         this.canvas = new PanelCanvas();
         this.summaryTable = new SummaryTable();
         this.timeTable = new TimeTable();
-
         this.seconds = 0;
 
         sendTimeToTable();
@@ -90,13 +79,27 @@ public final class ControladorSFJ implements ActionListener {
                         && (int) modelo.getValue(i, 2) > 0) {
                     modelo.setValue(i, 2, (int) modelo.getValue(i, 2) - 1);
                     modelo.setValue2(i, 1, (int) modelo.getValue2(i, 1) - 1);
+                    if((int)modelo.getValue2(i, 1)==0){
+                        modelo.setValue2(i, 4, seconds);
+                        modelo.setValue2(i, 5, seconds - (int)modelo.getValue(i, 1));
+                        modelo.setValue2(i, 6, (int)modelo.getValue2(i, 5) - (int)modelo.getValue(i, 10));
+                        modelo.setValue2(i, 7, Double.valueOf((int)modelo.getValue2(i, 5)) / Double.valueOf((int)modelo.getValue(i, 10)));
+                        modelo.setValue2(i, 8, (int)modelo.getValue(i, 11) - (int)modelo.getValue(i, 1));
+                        if ((int)modelo.getValue2(i, 4) - (int)modelo.getValue(i, 1) - (int)modelo.getValue2(i, 3) - (int)modelo.getValue(i, 11) < 0){
+                            modelo.setValue2(i, 2, ((int)modelo.getValue2(i, 4) - (int)modelo.getValue(i, 1)) - (int)modelo.getValue2(i, 3) - (int)modelo.getValue(i, 11)*(-1));
+                        }else if ((int)modelo.getValue2(i, 4) - (int)modelo.getValue(i, 1) - (int)modelo.getValue2(i, 3) - (int)modelo.getValue(i, 11) > 0){
+                            modelo.setValue2(i, 2, ((int)modelo.getValue2(i, 4) - (int)modelo.getValue(i, 1)) - (int)modelo.getValue2(i, 3) - (int)modelo.getValue(i, 11));
+                        }
+                        // modelo.setValue2(i, 2, ((int)modelo.getValue2(i, 4) - (int)modelo.getValue(i, 1)) - (int)modelo.getValue2(i, 3) - (int)modelo.getValue(i, 11));
+                    }                    
                 } else if (modelo.getValue(i, 4) != null
                         && (boolean) modelo.getValue(i, 5)) {
                     modelo.setValue(i, 4, (int) modelo.getValue(i, 4) + 1);
+                    modelo.setValue2(i, 3, (int) modelo.getValue(i, 4));
                 }
             }
         } catch (Exception ee) {
-            System.out.println("Objeto vacío");
+            System.out.println(ee);
         }
     }
 
@@ -138,14 +141,13 @@ public final class ControladorSFJ implements ActionListener {
         checkExec(row);
         modelo.setValue(row, 7, modelo.getValue(row, 4));
         modelo.setValue(row, 5, false);
-        modelo.setValue(row, 8, true); 
+        modelo.setValue(row, 8, true);
+        modelo.setValue(row, 11, this.seconds);
     }
 
     private void blockProcess(int row) {
         modelo.setValue(row, 3, seconds);
         // modelo.setValue(row, 4, modelo.getValue(row, 7));
-        modelo.setValue2(row, 3, modelo.getValue(row, 7));
-        System.out.println(modelo.getValue(row, 7));
         modelo.setValue(row, 5, true);
         modelo.setValue(row, 8, false);
         modelo.setValue(row, 6, modelo.getValue(row, 2));
