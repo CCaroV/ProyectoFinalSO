@@ -2,6 +2,8 @@ package vista;
 
 import controlador.ControladorFCFS;
 import controlador.ControladorSFJ;
+import controlador.ControladorSRTF;
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -100,12 +102,17 @@ public class PanelEndBegin extends JPanel {
         this.lblShowStatus.setText(text);
     }
 
-    public void asignListener(ControladorFCFS c) {
-        this.btnStart.addActionListener(c);
-        this.btnFinish.addActionListener(c);
+    public void asignListener(ControladorFCFS controladorSRTF) {
+        this.btnStart.addActionListener(controladorSRTF);
+        this.btnFinish.addActionListener(controladorSRTF);
     }
     
     public void asignListener(ControladorSFJ c) {
+        this.btnStart.addActionListener(c);
+        this.btnFinish.addActionListener(c);
+    }
+
+    public void asignListener(ControladorSRTF c) {
         this.btnStart.addActionListener(c);
         this.btnFinish.addActionListener(c);
     }

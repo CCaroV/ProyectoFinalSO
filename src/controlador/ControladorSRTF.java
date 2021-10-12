@@ -1,16 +1,10 @@
 package controlador;
 
-import vista.MainProcess;
-import vista.MainTable;
-import vista.PanelCanvas;
-import vista.SummaryTable;
-import vista.TimeTable;
-import vista.VistaFCFS;
+import vista.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.Timer;
-import modelo.FCFS;
-import vista.PanelEndBegin;
+import modelo.*;
 
 /**
  *
@@ -18,10 +12,10 @@ import vista.PanelEndBegin;
  * @author Jorge Andrés Bohórquez Castellanos
  * @author Santiago Ríos Valero
  */
-public final class ControladorFCFS implements ActionListener {
+public final class ControladorSRTF implements ActionListener {
 
-    VistaFCFS vista;
-    FCFS modelo;
+    VistaSRTF vista;
+    SRTF modelo;
     MainProcess process;
     PanelEndBegin panelEndBegin;
     MainTable mainTable;
@@ -32,10 +26,10 @@ public final class ControladorFCFS implements ActionListener {
 
     private int seconds;
 
-    public ControladorFCFS(VistaFCFS frame, FCFS modeloFCFS) {
+    public ControladorSRTF(VistaSRTF frame, SRTF modeloSRTF) {
 
         this.vista = frame;
-        this.modelo = modeloFCFS;
+        this.modelo = modeloSRTF;
         this.process = new MainProcess();
         this.panelEndBegin = new PanelEndBegin();
         this.mainTable = new MainTable();
