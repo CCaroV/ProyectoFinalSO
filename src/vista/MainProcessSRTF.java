@@ -25,6 +25,7 @@ public class MainProcessSRTF extends JPanel {
     private final JLabel[] lblProcess;
 
     //Definición de botones
+    private final JButton[] btnAdd;
     private final JButton[] btnExec;
     private final JButton[] btnBlock;
     private final JButton[] btnTerminate;
@@ -46,12 +47,14 @@ public class MainProcessSRTF extends JPanel {
         lblProcess = new JLabel[6];
 
         //Constructor de botones
-        // btnAdd = new JButton[6];
+        btnAdd = new JButton[6];
         btnExec = new JButton[6];
         btnBlock = new JButton[6];
         btnTerminate = new JButton[6];
-        for (int i = 0; i < btnExec.length; i++) {
-           
+        for (int i = 0; i < btnAdd.length; i++) {
+            btnAdd[i] = new JButton("Añadir");
+            btnAdd[i].setFont(fontInter);
+            this.add(btnAdd[i]);
 
             btnExec[i] = new JButton("Ejecutar");
             btnExec[i].setFont(fontInter);
@@ -83,7 +86,12 @@ public class MainProcessSRTF extends JPanel {
         lblProcess[5].setText("Chrome");
         lblProcess[5].setBounds(30, 230, 100, 30);
 
-
+        btnAdd[0].setBounds(110, 30, 90, 30);
+        btnAdd[1].setBounds(110, 70, 90, 30);
+        btnAdd[2].setBounds(110, 110, 90, 30);
+        btnAdd[3].setBounds(110, 150, 90, 30);
+        btnAdd[4].setBounds(110, 190, 90, 30);
+        btnAdd[5].setBounds(110, 230, 90, 30);
 
         btnExec[0].setBounds(220, 30, 100, 30);
         btnExec[1].setBounds(220, 70, 100, 30);
@@ -109,7 +117,7 @@ public class MainProcessSRTF extends JPanel {
     }
 
     public JButton getBtnAdd (int row) {
-        return this.btnExec[row];
+        return this.btnAdd[row];
     }
     
     public JButton getBtnExec (int row) {
@@ -125,7 +133,8 @@ public class MainProcessSRTF extends JPanel {
     }
     
     public void asignListener(ControladorFCFS c) {
-        for (int i = 0; i < btnExec.length; i++) {
+        for (int i = 0; i < btnAdd.length; i++) {
+            btnAdd[i].addActionListener(c);
             btnExec[i].addActionListener(c);
             btnBlock[i].addActionListener(c);
             btnTerminate[i].addActionListener(c);
@@ -133,14 +142,16 @@ public class MainProcessSRTF extends JPanel {
     }
 
     public void asignListener(ControladorSFJ c) {
-        for (int i = 0; i < btnExec.length; i++) {
+        for (int i = 0; i < btnAdd.length; i++) {
+            btnAdd[i].addActionListener(c);
             btnExec[i].addActionListener(c);
             btnBlock[i].addActionListener(c);
             btnTerminate[i].addActionListener(c);
         }
     }
     public void asignListener(ControladorSRTF c) {
-        for (int i = 0; i < btnExec.length; i++) {
+        for (int i = 0; i < btnAdd.length; i++) {
+            btnAdd[i].addActionListener(c);
             btnExec[i].addActionListener(c);
             btnBlock[i].addActionListener(c);
             btnTerminate[i].addActionListener(c);

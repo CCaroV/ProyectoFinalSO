@@ -120,26 +120,34 @@ public final class ControladorFCFS implements ActionListener {
     }
 
     public void blockProcess(int row) {
-        modelo.setValue(row, 3, seconds);
+        modelo.setValue(row, 3, seconds); //Indica el segundo exacto en el que se bloquea el proceso
         modelo.setValue(row, 4, modelo.getValue(row, 7));
-        modelo.setValue(row, 5, true);
-        modelo.setValue(row, 8, false);
+        modelo.setValue(row, 5, true); //Pasa a bloqueado
+        modelo.setValue(row, 8, false); //Pasa a no ejecutado
         modelo.setValue(row, 6, modelo.getValue(row, 2));
-        modelo.setValue(row, 9, (int) modelo.getValue(row, 9) + 1);
+        modelo.setValue(row, 9, 1);
+        int aux = (int) modelo.getValue(row, 9);
+        for (int i = 0; i < 6; i++) {
+            if ((int) modelo.getValue(i, 9) >= aux && i != row) {
+                modelo.setValue(row, 9, (int) modelo.getValue(i, 9) + 1);
+            }
+        }
+
     }
 
     public void finishProcess(int row) {
         modelo.setValue(row, 5, false);
         modelo.setValue(row, 8, false);
-        int aux = 0;
-        for (int i = 0; i < 5; i++) {
-            //No funciona como debería
-            if ((int) modelo.getValue(i, 9) > (int) modelo.getValue(i + 1, 9) 
-                    && (boolean) modelo.getValue(i, 5)) {
-                aux = i;
+        modelo.setValue(row, 9, 0);
+        int aux = (int) modelo.getValue(row, 9);
+        int position = 0;
+        for (int i = 0; i < 6; i++) {
+            if ((int) modelo.getValue(i, 9) > aux) {
+                aux = (int) modelo.getValue(i, 9);
+                position = i;
             }
         }
-        execProcess(aux);
+        execProcess(position);
     }
 
     @Override
