@@ -47,12 +47,12 @@ public final class SFJ {
 
         for (int i = 1; i < 10; i++) {
             if (i != 5 && i != 8) {
-                text[0][i] = 7;
-                text[1][i] = 69;
-                text[2][i] = 429;
-                text[3][i] = 43;
-                text[4][i] = 54;
-                text[5][i] = 1;
+                text[0][i] = 0;
+                text[1][i] = 0;
+                text[2][i] = 0;
+                text[3][i] = 0;
+                text[4][i] = 0;
+                text[5][i] = 0;
             }
         }
     }

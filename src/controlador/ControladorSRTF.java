@@ -16,7 +16,7 @@ public final class ControladorSRTF implements ActionListener {
 
     VistaSRTF vista;
     SRTF modelo;
-    MainProcess process;
+    MainProcessSRTF process;
     PanelEndBegin panelEndBegin;
     MainTable mainTable;
     PanelCanvas canvas;
@@ -30,7 +30,7 @@ public final class ControladorSRTF implements ActionListener {
 
         this.vista = frame;
         this.modelo = modeloSRTF;
-        this.process = new MainProcess();
+        this.process = new MainProcessSRTF();
         this.panelEndBegin = new PanelEndBegin();
         this.mainTable = new MainTable();
         this.canvas = new PanelCanvas();

@@ -12,7 +12,7 @@ import vista.MainTable;
 import vista.PanelCanvas;
 import vista.SummaryTable;
 import vista.TimeTable;
-import vista.VistaSJF;
+import vista.VistaSFJ;
 import vista.PanelEndBegin;
 import modelo.SFJ;
 
@@ -24,7 +24,7 @@ import modelo.SFJ;
  */
 public final class ControladorSFJ implements ActionListener {
 
-    VistaSJF vista;
+    VistaSFJ vista;
     SFJ modelo;
     MainProcess process;
     PanelEndBegin panelEndBegin;
@@ -36,7 +36,7 @@ public final class ControladorSFJ implements ActionListener {
 
     private int seconds;
     
-    public ControladorSFJ(VistaSJF frame, SFJ modeloSJF) {
+    public ControladorSFJ(VistaSFJ frame, SFJ modeloSJF) {
 
         this.vista = frame;
         this.modelo = modeloSJF;
@@ -54,7 +54,6 @@ public final class ControladorSFJ implements ActionListener {
         //Define el intervalo de tiempo y el evento a escuchar
         this.timer = new Timer(1000, (ActionEvent ae) -> {
             seconds++;
-            
             increaseCellValue();
             sendTimeToTable();
         });
@@ -81,17 +80,13 @@ public final class ControladorSFJ implements ActionListener {
         this.process.asignListener(this);
     }
 
-    public void decreaseCellValue(){
-        modelo.setValue(0, 2, (int) modelo.getValue(0, 2)-1);
-    }
-
     public void increaseCellValue() {
         try {
             for (int i = 0; i < 6; i++) {
                 if (modelo.getValue(i, 2) != null
                         && !(boolean) modelo.getValue(i, 5)
                         && (boolean) modelo.getValue(i, 8)
-                        && (int) modelo.getValue(i, 2) >= 0) {
+                        && (int) modelo.getValue(i, 2) > 0) {
                     modelo.setValue(i, 2, (int) modelo.getValue(i, 2) - 1);
                 } else if (modelo.getValue(i, 4) != null
                         && (boolean) modelo.getValue(i, 5)) {
@@ -100,6 +95,13 @@ public final class ControladorSFJ implements ActionListener {
             }
         } catch (Exception ee) {
             System.out.println("Objeto vacío");
+        }
+    }
+
+    public void checkExec(int row){
+        if ((int) modelo.getValue(row, 2) == 0 ){
+            modelo.setValue(row, 8, false);
+            modelo.setValue(row, 5, false);
         }
     }
 
@@ -116,12 +118,39 @@ public final class ControladorSFJ implements ActionListener {
         return this.seconds;
     }
 
-    public void execProcess(int row){ 
-        
+    public void execProcess(int row){
+        for (int i = 0; i < 6; i++) {
+            if ((boolean) modelo.getValue(i, 8) && (int)modelo.getValue(i, 2)>0) {
+                blockProcess(i);
+            }
+        }
+        checkExec(row);
+        modelo.setValue(row, 7, modelo.getValue(row, 4));
+        modelo.setValue(row, 5, false);
+        modelo.setValue(row, 8, true); 
     }
-    private void finishProcess(int row) {
-    }
+
     private void blockProcess(int row) {
+        modelo.setValue(row, 3, seconds);
+        modelo.setValue(row, 4, modelo.getValue(row, 7));
+        modelo.setValue(row, 5, true);
+        modelo.setValue(row, 8, false);
+        modelo.setValue(row, 6, modelo.getValue(row, 2));
+        modelo.setValue(row, 9, (int) modelo.getValue(row, 9) + 1);
+    }
+
+    private void finishProcess(int row) {
+        modelo.setValue(row, 5, false);
+        modelo.setValue(row, 8, false);
+        int aux = 0;
+        for (int i = 0; i < 5; i++) {
+            //No funciona como debería
+            if ((int) modelo.getValue(i, 9) > (int) modelo.getValue(i + 1, 9) 
+                    && (boolean) modelo.getValue(i, 5)) {
+                aux = i;
+            }
+        }
+        execProcess(aux);
     }
 
     @Override
@@ -182,6 +211,4 @@ public final class ControladorSFJ implements ActionListener {
             finishProcess(5);
         }
     }
-    
-    
 }

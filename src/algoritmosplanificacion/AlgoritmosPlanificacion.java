@@ -1,14 +1,9 @@
 package algoritmosplanificacion;
 
-import vista.VistaFCFS;
-import vista.VistaSJF;
-
+import vista.*;
 import javax.tools.StandardJavaFileManager;
-
-import controlador.ControladorFCFS;
-import controlador.ControladorSFJ;
-import modelo.FCFS;
-import modelo.SFJ;
+import controlador.*;
+import modelo.*;
 
 /**
  *
@@ -24,17 +19,19 @@ public class AlgoritmosPlanificacion {
     public static void main(String[] args) {
 
         // VistaFCFS vistaFCFS = new VistaFCFS();
-        VistaSJF vistaSJF = new VistaSJF();
+        // VistaSFJ vistaSFJ = new VistaSFJ();
+        VistaSRTF vistaSRTF = new VistaSRTF();
         // FCFS modelo = new FCFS();
-        SFJ modelo = new SFJ();
+        // SFJ modelo = new SFJ();
+        SRTF modelo = new SRTF();
         // ControladorFCFS controlador = new ControladorFCFS(vistaFCFS, modelo);
-        ControladorSFJ controladorSFJ = new ControladorSFJ(vistaSJF, modelo);
-
+        // ControladorSFJ controladorSFJ = new ControladorSFJ(vistaSFJ, modelo);
+        ControladorSRTF ControladorSRTF = new ControladorSRTF(vistaSRTF, modelo);
         javax.swing.SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                controladorSFJ.setupFrame();
-                controladorSFJ.setupListeners();
+                ControladorSRTF.setupFrame();
+                ControladorSRTF.setupListeners();
             }
         });
     }

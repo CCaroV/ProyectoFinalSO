@@ -11,7 +11,6 @@ import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 
 /**
  *
@@ -19,7 +18,7 @@ import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
  * @author Jorge Andrés Bohórquez Castellanos
  * @author Santiago Ríos Valero
  */
-public final class VistaSJF extends JFrame {
+public final class VistaSFJ extends JFrame {
 
     //Definición de scrollpPane
     private final JScrollPane panelScroll;
@@ -30,7 +29,7 @@ public final class VistaSJF extends JFrame {
     //Definición de la dimensión del Frame
     private final Dimension screenSize;
 
-    public VistaSJF() throws HeadlessException {
+    public VistaSFJ() throws HeadlessException {
         super("Primero el trabajo más corto");
 
         //Definición de Scroll Pane
