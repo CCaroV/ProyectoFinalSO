@@ -48,7 +48,7 @@ public final class ControladorSFJ implements ActionListener {
             sendTimeToTable2();
         });
     }
-    public void setupFrame() {
+    public void setupFrameSFJ() {
         //Mostrar Frame
         vista.setVisible(true);
 
@@ -63,6 +63,7 @@ public final class ControladorSFJ implements ActionListener {
         //vista.placeComp(this.canvas, vista.getMainPanel(), 0, 2, 5, 1);
         vista.placeComp(this.process, vista.getMainPanel(), 0, 2, 2, 1);
         vista.placeComp(this.summaryTable, vista.getMainPanel(), 2, 2, 2, 1);
+        setupListeners();
     }
 
     public void setupListeners() {

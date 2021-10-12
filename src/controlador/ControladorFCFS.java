@@ -51,7 +51,7 @@ public final class ControladorFCFS implements ActionListener {
         });
     }
 
-    public void setupFrame() {
+    public void setupFrameFCFS() {
         // Mostrar Frame
         vista.setVisible(true);
 
@@ -66,6 +66,7 @@ public final class ControladorFCFS implements ActionListener {
         // vista.placeComp(this.canvas, vista.getMainPanel(), 0, 2, 5, 1);
         vista.placeComp(this.process, vista.getMainPanel(), 0, 2, 2, 1);
         vista.placeComp(this.summaryTable, vista.getMainPanel(), 2, 2, 2, 1);
+        setupListeners();
     }
 
     public void setupListeners() {
@@ -152,6 +153,7 @@ public final class ControladorFCFS implements ActionListener {
             }
         }
         execProcess(position);
+        
         modelo.setValue2(row, 1, (int) modelo.getValue(row, 2));
         modelo.setValue2(row, 3, (int) modelo.getValue(row, 4));
         modelo.setValue2(row, 4, seconds);
@@ -159,15 +161,15 @@ public final class ControladorFCFS implements ActionListener {
         modelo.setValue2(row, 6, (int) modelo.getValue2(row, 5) - (int) modelo.getValue(row, 1));
         modelo.setValue2(row, 7,
                 Double.valueOf((int) modelo.getValue2(row, 6)) / Double.valueOf((int) modelo.getValue(row, 1)));
-        modelo.setValue2(row, 8, ((int) modelo.getValue(row, 2) - (int) modelo.getValue(row, 10)* -1));
+        modelo.setValue2(row, 8, ((int) modelo.getValue(row, 2) - (int) modelo.getValue(row, 10) * -1));
         if ((int) modelo.getValue2(row, 4) - (int) modelo.getValue(row, 1) - (int) modelo.getValue2(row, 3)
-                - (int) modelo.getValue(row, 11) < 0) {
+                - (int) modelo.getValue(row, 10) < 0) {
             modelo.setValue2(row, 2, ((int) modelo.getValue2(row, 4) - (int) modelo.getValue(row, 1))
-                    - (int) modelo.getValue2(row, 3) - (int) modelo.getValue(row, 11) * (-1));
+                    - (int) modelo.getValue2(row, 3) - (int) modelo.getValue(row, 10) * (-1));
         } else if ((int) modelo.getValue2(row, 4) - (int) modelo.getValue(row, 1) - (int) modelo.getValue2(row, 3)
-                - (int) modelo.getValue(row, 11) > 0) {
+                - (int) modelo.getValue(row, 10) > 0) {
             modelo.setValue2(row, 2, ((int) modelo.getValue2(row, 4) - (int) modelo.getValue(row, 1))
-                    - (int) modelo.getValue2(row, 3) - (int) modelo.getValue(row, 11));
+                    - (int) modelo.getValue2(row, 3) - (int) modelo.getValue(row, 10));
         }
 
     }

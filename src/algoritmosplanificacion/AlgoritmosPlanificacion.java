@@ -1,8 +1,7 @@
 package algoritmosplanificacion;
 
-import vista.*;
-import controlador.*;
-import modelo.*;
+import menuPrincipal.ControladorMenu;
+import menuPrincipal.MenuPrincipal;
 
 /**
  *
@@ -16,23 +15,17 @@ public class AlgoritmosPlanificacion {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-
-        VistaFCFS vistaFCFS = new VistaFCFS();
-        // VistaSFJ vistaSFJ = new VistaSFJ();
-        // VistaSRTF vistaSRTF = new VistaSRTF();
-        FCFS modelo = new FCFS();
-        // SFJ modelo = new SFJ();
-        // SRTF modelo = new SRTF();
-        ControladorFCFS controlador = new ControladorFCFS(vistaFCFS, modelo);
-        // ControladorSFJ controlador = new ControladorSFJ(vistaSFJ, modelo);
-        // ControladorSRTF controlador = new ControladorSRTF(vistaSRTF, modelo);
+        
+        MenuPrincipal vista = new MenuPrincipal();
+        ControladorMenu controlador =  new ControladorMenu(vista);
+        
         javax.swing.SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                controlador.setupFrame();
-                controlador.setupListeners();
+                controlador.setUpFrame();
             }
-        });
+        }
+        );
     }
 
 }

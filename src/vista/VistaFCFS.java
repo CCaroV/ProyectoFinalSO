@@ -43,7 +43,7 @@ public final class VistaFCFS extends JFrame {
         } else {
             this.setSize(screenSize.width, screenSize.height);
         }
-        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        this.setDefaultCloseOperation(HIDE_ON_CLOSE);
         this.setLocationRelativeTo(null);
         this.setContentPane(panelScroll);
 

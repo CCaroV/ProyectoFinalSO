@@ -24,15 +24,14 @@ public class MenuPrincipal extends JFrame {
 
     private JPanel mainPanel;
 
-    private final Dimension screenSize;
-
     public MenuPrincipal() throws HeadlessException {
         super("Proyecto final");
 
         this.panelScroll = new JScrollPane(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,
                 JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 
-        this.screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        this.setSize(410, 410);
+        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);

@@ -52,7 +52,7 @@ public final class ControladorSRTF implements ActionListener {
         });
     }
 
-    public void setupFrame() {
+    public void setupFrameSRTF() {
         // Mostrar Frame
         vista.setVisible(true);
 
@@ -67,6 +67,7 @@ public final class ControladorSRTF implements ActionListener {
         // vista.placeComp(this.canvas, vista.getMainPanel(), 0, 2, 5, 1);
         vista.placeComp(this.process, vista.getMainPanel(), 0, 2, 2, 1);
         vista.placeComp(this.summaryTable, vista.getMainPanel(), 2, 2, 2, 1);
+        setupListeners();
     }
 
     public void setupListeners() {
@@ -75,6 +76,7 @@ public final class ControladorSRTF implements ActionListener {
     }
 
     public void increaseCellValue() {
+        int aux = 33;
         try {
             for (int i = 0; i < 6; i++) {
                 if (modelo.getValue(i, 2) != null
@@ -84,6 +86,15 @@ public final class ControladorSRTF implements ActionListener {
                     modelo.setValue(i, 2, (int) modelo.getValue(i, 2) - 1);
                     modelo.setValue2(i, 1, (int) modelo.getValue2(i, 1) - 1);
                     if((int)modelo.getValue2(i, 1)==0){
+                        
+                        for(int j = 0; j < 6; j++){
+                            if((boolean)modelo.getValue(j,5) && ((int)(modelo.getValue(j,2))>0)){
+                                aux = j; 
+                                System.out.println("Este es aux " + aux);
+                        
+                                break;
+                            }
+                        }
                         modelo.setValue2(i, 4, seconds);
                         modelo.setValue2(i, 5, seconds - (int)modelo.getValue(i, 1));
                         modelo.setValue2(i, 6, (int)modelo.getValue2(i, 5) - (int)modelo.getValue(i, 10));
@@ -95,6 +106,8 @@ public final class ControladorSRTF implements ActionListener {
                         }else if ((int)modelo.getValue2(i, 4) - (int)modelo.getValue(i, 1) - (int)modelo.getValue2(i, 3) - (int)modelo.getValue(i, 11) > 0){
                             modelo.setValue2(i, 2, ((int)modelo.getValue2(i, 4) - (int)modelo.getValue(i, 1)) - (int)modelo.getValue2(i, 3) - (int)modelo.getValue(i, 11));
                         }
+                        execProcess(aux) ;
+
                     }                    
                 } else if (modelo.getValue(i, 4) != null
                         && (boolean) modelo.getValue(i, 5)) {
@@ -107,11 +120,15 @@ public final class ControladorSRTF implements ActionListener {
         }
     }
 
-
     public void checkExec(int row) {
         if ((int) modelo.getValue(row, 2) == 0) {
             modelo.setValue(row, 8, false);
             modelo.setValue(row, 5, false);
+        }
+        for (int i = 0; i < 6; i ++){
+            if((boolean)modelo.getValue(i, 8)){
+                execProcess(i);
+            }
         }
     }
 
@@ -138,10 +155,15 @@ public final class ControladorSRTF implements ActionListener {
     }
 
     public void execProcess(int row) {
+        int aux = (int)modelo.getValue(row,2); 
         for (int i = 0; i < 6; i++) {
-
             if ((boolean) modelo.getValue(i, 8) && (int) modelo.getValue(i, 2) > 0) {
                 blockProcess(i);
+                if ((int)modelo.getValue(i, 2) < aux){
+                    blockProcess(row);
+                    row = i;
+                    
+                }
             }
         }
         checkExec(row);
