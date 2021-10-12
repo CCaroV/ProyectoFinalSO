@@ -42,7 +42,7 @@ public final class ControladorFCFS implements ActionListener {
 
         sendTimeToTable();
         sendTimeToTable2();
-        //Define el intervalo de tiempo y el evento a escuchar
+        // Define el intervalo de tiempo y el evento a escuchar
         this.timer = new Timer(1000, (ActionEvent ae) -> {
             seconds++;
             increaseCellValue();
@@ -52,18 +52,18 @@ public final class ControladorFCFS implements ActionListener {
     }
 
     public void setupFrame() {
-        //Mostrar Frame
+        // Mostrar Frame
         vista.setVisible(true);
 
-        //Primera fila
+        // Primera fila
         vista.placeComp(this.panelEndBegin, vista.getMainPanel(), 0, 0, 1, 1);
         vista.placeComp(this.mainTable, vista.getMainPanel(), 1, 0, 2, 1);
 
-        //Segunda fila
+        // Segunda fila
         vista.placeComp(this.timeTable, vista.getMainPanel(), 0, 1, 4, 1);
 
-        //Tercera fila
-        //vista.placeComp(this.canvas, vista.getMainPanel(), 0, 2, 5, 1);
+        // Tercera fila
+        // vista.placeComp(this.canvas, vista.getMainPanel(), 0, 2, 5, 1);
         vista.placeComp(this.process, vista.getMainPanel(), 0, 2, 2, 1);
         vista.placeComp(this.summaryTable, vista.getMainPanel(), 2, 2, 2, 1);
     }
@@ -76,12 +76,10 @@ public final class ControladorFCFS implements ActionListener {
     public void increaseCellValue() {
         try {
             for (int i = 0; i < 6; i++) {
-                if (modelo.getValue(i, 2) != null
-                        && !(boolean) modelo.getValue(i, 5)
+                if (modelo.getValue(i, 2) != null && !(boolean) modelo.getValue(i, 5)
                         && (boolean) modelo.getValue(i, 8)) {
                     modelo.setValue(i, 2, (int) modelo.getValue(i, 2) + 1);
-                } else if (modelo.getValue(i, 4) != null
-                        && (boolean) modelo.getValue(i, 5)) {
+                } else if (modelo.getValue(i, 4) != null && (boolean) modelo.getValue(i, 5)) {
                     modelo.setValue(i, 4, (int) modelo.getValue(i, 4) + 1);
                 }
             }
@@ -99,8 +97,7 @@ public final class ControladorFCFS implements ActionListener {
         this.panelEndBegin.setLblTime(seconds);
     }
 
-
-    public void sendTimeToTable2(){
+    public void sendTimeToTable2() {
         for (int i = 0; i < 6; i++) {
             for (int j = 0; j < 9; j++) {
                 timeTable.setCell(i, j, modelo.getValue2(i, j));
@@ -126,10 +123,10 @@ public final class ControladorFCFS implements ActionListener {
     }
 
     public void blockProcess(int row) {
-        modelo.setValue(row, 3, seconds); //Indica el segundo exacto en el que se bloquea el proceso
+        modelo.setValue(row, 3, seconds); // Indica el segundo exacto en el que se bloquea el proceso
         modelo.setValue(row, 4, modelo.getValue(row, 7));
-        modelo.setValue(row, 5, true); //Pasa a bloqueado
-        modelo.setValue(row, 8, false); //Pasa a no ejecutado
+        modelo.setValue(row, 5, true); // Pasa a bloqueado
+        modelo.setValue(row, 8, false); // Pasa a no ejecutado
         modelo.setValue(row, 6, modelo.getValue(row, 2));
         modelo.setValue(row, 9, 1);
         int aux = (int) modelo.getValue(row, 9);
@@ -142,8 +139,7 @@ public final class ControladorFCFS implements ActionListener {
     }
 
     public void finishProcess(int row) {
-      
-        
+
         modelo.setValue(row, 5, false);
         modelo.setValue(row, 8, false);
         modelo.setValue(row, 9, 0);
@@ -156,18 +152,24 @@ public final class ControladorFCFS implements ActionListener {
             }
         }
         execProcess(position);
-        
-            modelo.setValue2(row, 4, seconds);
-            modelo.setValue2(row, 5, seconds - (int)modelo.getValue(row, 1));
-            modelo.setValue2(row, 6, (int)modelo.getValue2(row, 5) - (int)modelo.getValue(row, 10));
-            modelo.setValue2(row, 7, Double.valueOf((int)modelo.getValue2(row, 5)) / Double.valueOf((int)modelo.getValue(row, 10)));
-            modelo.setValue2(row, 8, (int)modelo.getValue(row, 11) - (int)modelo.getValue(row, 1));
-            if ((int)modelo.getValue2(row, 4) - (int)modelo.getValue(row, 1) - (int)modelo.getValue2(row, 3) - (int)modelo.getValue(row, 11) < 0){
-                modelo.setValue2(row, 2, ((int)modelo.getValue2(row, 4) - (int)modelo.getValue(row, 1)) - (int)modelo.getValue2(row, 3) - (int)modelo.getValue(row, 11)*(-1));
-            }else if ((int)modelo.getValue2(row, 4) - (int)modelo.getValue(row, 1) - (int)modelo.getValue2(row, 3) - (int)modelo.getValue(row, 11) > 0){
-                modelo.setValue2(row, 2, ((int)modelo.getValue2(row, 4) - (int)modelo.getValue(row, 1)) - (int)modelo.getValue2(row, 3) - (int)modelo.getValue(row, 11));
-            }
-         
+        modelo.setValue2(row, 1, (int) modelo.getValue(row, 2));
+        modelo.setValue2(row, 3, (int) modelo.getValue(row, 4));
+        modelo.setValue2(row, 4, seconds);
+        modelo.setValue2(row, 5, seconds - (int) modelo.getValue(row, 1));
+        modelo.setValue2(row, 6, (int) modelo.getValue2(row, 5) - (int) modelo.getValue(row, 1));
+        modelo.setValue2(row, 7,
+                Double.valueOf((int) modelo.getValue2(row, 6)) / Double.valueOf((int) modelo.getValue(row, 1)));
+        modelo.setValue2(row, 8, (int) modelo.getValue(row, 11) - (int) modelo.getValue(row, 1));
+        if ((int) modelo.getValue2(row, 4) - (int) modelo.getValue(row, 1) - (int) modelo.getValue2(row, 3)
+                - (int) modelo.getValue(row, 11) < 0) {
+            modelo.setValue2(row, 2, ((int) modelo.getValue2(row, 4) - (int) modelo.getValue(row, 1))
+                    - (int) modelo.getValue2(row, 3) - (int) modelo.getValue(row, 11) * (-1));
+        } else if ((int) modelo.getValue2(row, 4) - (int) modelo.getValue(row, 1) - (int) modelo.getValue2(row, 3)
+                - (int) modelo.getValue(row, 11) > 0) {
+            modelo.setValue2(row, 2, ((int) modelo.getValue2(row, 4) - (int) modelo.getValue(row, 1))
+                    - (int) modelo.getValue2(row, 3) - (int) modelo.getValue(row, 11));
+        }
+
     }
 
     @Override
